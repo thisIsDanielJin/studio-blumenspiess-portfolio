@@ -1,0 +1,45 @@
+@import '@/styles/theme.scss';
+
+.header {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(color(foreground), 0.1);
+    background-color: color(white);
+    color: color(black);
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .link {
+        font-family: var(--font-geist-sans);
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 0.1rem solid color(black);
+        border-radius: 2rem;
+        transition: opacity 0.2s ease;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+
+    
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+
+        .nav {
+            gap: 1rem;
+        }
+    }
+}
