@@ -5,3 +5,28 @@
     min-height: 100%;
     padding: 2rem;
 } 
+
+.verticalTextLeft {
+    display: inline-block;
+    animation: scroll-right 10s linear infinite;
+}
+
+.mainContent {
+ 
+ 
+}
+
+.verticalTextRight {
+    display: inline-block;
+    animation: scroll-right 10s linear infinite;
+}
+
+@keyframes scroll-right {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
