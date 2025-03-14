@@ -1,0 +1,15 @@
+@import '@/styles/theme.scss';
+
+.projectsPage {
+    width: 100%;
+    flex: 1;
+    background-color: color(white);
+    display: flex;
+    flex-direction: column;
+    color: color(black);
+}
+
+.content {
+    flex: 1;
+    padding: 2rem;
+} 

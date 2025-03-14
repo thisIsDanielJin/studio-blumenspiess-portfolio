@@ -19,7 +19,7 @@ $colors: (
   gray-800: #424242,
   gray-900: #212121,
 
-  // Theme colors - always white background
+  // Theme colors
   background: #FFFFFF,
   foreground: #171717,
 );
@@ -27,20 +27,4 @@ $colors: (
 // Function to access colors
 @function color($color-name) {
   @return map-get($colors, $color-name);
-}
-
-// CSS Variables
-:root {
-  --background: #{color(background)};
-  --foreground: #{color(foreground)};
-
-  // Light mode
-  --background: #{color(white)};
-  --foreground: #{color(black)};
-  
-  // Dark mode
-  @media (prefers-color-scheme: dark) {
-    --background: #{color(black)};
-    --foreground: #{color(white)};
-  }
 } 

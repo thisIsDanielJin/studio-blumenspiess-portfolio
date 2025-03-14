@@ -1,10 +1,9 @@
-@import '@/styles/theme.scss';
-
 .footer {
     width: 100%;
     padding: 1.5rem 2rem;
-    border-top: 1px solid rgba(color(foreground), 0.1);
-    background-color: color(background);
+    border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+    background-color: #fff;
+    color: #000;
 
     .container {
         max-width: 1200px;
@@ -14,24 +13,24 @@
         align-items: center;
     }
 
-    .copyright {
-        font-size: 0.875rem;
-        color: color(foreground);
+    .leftContainer, .rightContainer {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
     }
 
-    .links {
-        display: flex;
-        gap: 1.5rem;
+    .link {
+        font-family: var(--font-geist-sans);
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 0.1rem solid #000;
+        border-radius: 2rem;
+        transition: opacity 0.2s ease;
 
-        a {
-            font-size: 0.875rem;
-            color: color(foreground);
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-
-            &:hover {
-                opacity: 0.7;
-            }
+        &:hover {
+            opacity: 0.7;
         }
     }
 }
@@ -39,11 +38,5 @@
 @media (max-width: 768px) {
     .footer {
         padding: 1rem;
-
-        .container {
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-        }
     }
 }

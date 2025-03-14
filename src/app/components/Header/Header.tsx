@@ -6,17 +6,18 @@ export const Header = () => {
         <header className={styles.header}>
             <nav className={styles.container}>
                 <Link href="/" className={styles.link}>
-                    About
+                    ABOUT
                 </Link>
 
-                <Link href="/projects" className={styles.link}>
-                    Projects
+                <Link href="/projects" className={styles.projectslink}>
+                    PROJEKTE
                 </Link>
 
                 <Link href="/" className={styles.link}>
-                    Kontakt
+                    KONTAKT
                 </Link>
-                <Link href="/about" className={styles.link}>
+
+                <Link href="/" className={styles.link}>
                     DE/EN
                 </Link>
             </nav>
