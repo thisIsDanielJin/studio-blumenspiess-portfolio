@@ -24,15 +24,17 @@ export const Footer = () => {
         setActiveCard((current) => (current === cardType ? null : cardType));
     };
 
+    const instagramLink = "https://www.instagram.com/studio.blumenspiess/";
+    const mailLink = "mailto:helio.spiess@studio-blumenspiess.de";
     return (
         <>
             <footer className={styles.footer}>
                 <div className={styles.container}>
                     <nav className={styles.leftContainer}>
-                        <Link href="/" className={styles.link}>
+                        <Link href={instagramLink} className={styles.link}>
                             Instagram
                         </Link>
-                        <Link href="/" className={styles.link}>
+                        <Link href={mailLink} className={styles.link}>
                             Mail
                         </Link>
                         <Link href="/" className={styles.link}>
