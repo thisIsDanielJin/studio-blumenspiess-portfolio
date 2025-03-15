@@ -1,32 +1,73 @@
 @import '@/styles/theme.scss';
 
 .aboutPage {
-    background-color: color(white);
+    background-color: color(black);
     min-height: 100%;
-    padding: 2rem;
-} 
-
-.verticalTextLeft {
-    display: inline-block;
-    animation: scroll-right 10s linear infinite;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
 }
 
 .mainContent {
- 
- 
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.contentArea {
+    flex: 1;
+    padding: 2rem;
+    z-index: 1;
+}
+
+.verticalTextLeft,
+.verticalTextRight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2rem;
+    display: flex;
+    flex-direction: column;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: var(--font-geist-mono);
+    font-size: 1.5rem;
+    color: color(white);
+    opacity: 0.4;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.verticalTextLeft {
+    left: 0;
+    transform: rotate(180deg);
+}
+
+.verticalTextLeft::before,
+.verticalTextLeft::after {
+    content: "STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS";
+    display: block;
+    animation: scrollTextDown 20s linear infinite;
+    transform: rotate(180deg);
 }
 
 .verticalTextRight {
-    display: inline-block;
-    animation: scroll-right 10s linear infinite;
+    right: 0;
 }
 
-@keyframes scroll-right {
-    from {
-        transform: translateX(-100%);
-    }
+.verticalTextRight::before,
+.verticalTextRight::after {
+    content: "STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS • STUDIO BLUMENSPIESS";
+    display: block;
+    animation: scrollTextDown 20s linear infinite;
+}
 
-    to {
-        transform: translateX(100%);
+@keyframes scrollTextDown {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
     }
 }

@@ -2,6 +2,7 @@
 .header {
     width: 100%;
     padding: 1.5rem 2rem;
+    height: var(--header-height);
     border-bottom: 1px solid rgba(color(foreground), 0.1);
     background-color: color(white);
     color: color(black);
