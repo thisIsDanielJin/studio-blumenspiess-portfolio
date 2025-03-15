@@ -1,6 +1,7 @@
 import React from "react";
 import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
 import styles from "./About.module.scss";
+import Image from "next/image";
 
 export const AboutPage = () => {
     return (
@@ -9,7 +10,13 @@ export const AboutPage = () => {
                 <div className={styles.verticalTextLeft}></div>
 
                 <div className={styles.contentArea}>
-                    About content goes here
+                    <Image
+                        src="/img/PlaceholderAboutpage.png"
+                        alt="About Image"
+                        className={styles.aboutImage}
+                        width={1000}
+                        height={1000}
+                    />
                 </div>
 
                 <div className={styles.verticalTextRight}></div>
