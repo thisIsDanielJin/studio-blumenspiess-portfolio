@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./Footer.module.scss";
 import { Textcard } from "../Textcard/Textcard";
 import { useState } from "react";
+import LanguageIcon from "@mui/icons-material/Language";
 
 type CardContent = {
     box1: string;
@@ -38,7 +39,7 @@ export const Footer = () => {
                             Mail
                         </Link>
                         <Link href="/" className={styles.link}>
-                            World
+                            <LanguageIcon />
                         </Link>
                     </nav>
                     <nav

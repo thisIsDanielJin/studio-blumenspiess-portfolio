@@ -33,6 +33,11 @@
     .projectslink {
         @extend .link;
         flex-grow: 2;
+        text-align: center;
+    }
+
+    .projectslinktext {
+        transform: scaleX(5);
     }
 }
 

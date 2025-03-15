@@ -10,7 +10,7 @@ export const Header = () => {
                 </Link>
 
                 <Link href="/projects" className={styles.projectslink}>
-                    PROJEKTE
+                    <p className={styles.projectslinktext}>PROJEKTE</p>
                 </Link>
 
                 <Link href="/" className={styles.link}>
