@@ -1,0 +1,84 @@
+{
+    "projekte": [
+        {
+            "name": "Kreativ Hub Berlin",
+            "ort": "Berlin, Deutschland",
+            "personen": ["Anna Schmidt", "Tom Müller", "Lisa Becker"],
+            "beschreibung1": "Ein Co-Working-Space für kreative Köpfe aus verschiedenen Branchen.",
+            "beschreibung2": "Bietet flexible Arbeitsplätze, Networking-Events und Workshops.",
+            "titelBild": "https://picsum.photos/800/600?random=1"
+        },
+        {
+            "name": "Tech Innovation Lab",
+            "ort": "München, Deutschland",
+            "personen": ["Michael Weber", "Sophia Klein"],
+            "beschreibung1": "Ein Labor für technologische Innovationen und Startups.",
+            "beschreibung2": "Fokus auf KI, Blockchain und IoT mit regelmäßigen Hackathons.",
+            "titelBild": "https://picsum.photos/800/600?random=2"
+        },
+        {
+            "name": "Urban Gardening Projekt",
+            "ort": "Hamburg, Deutschland",
+            "personen": ["Paul Meier", "Clara Hoffmann", "Jonas Lehmann"],
+            "beschreibung1": "Förderung nachhaltiger Stadtbegrünung durch gemeinschaftliche Gärten.",
+            "beschreibung2": "Workshops zur Permakultur und urbanem Gemüseanbau.",
+            "titelBild": "https://picsum.photos/800/600?random=3"
+        },
+        {
+            "name": "Design Thinking Studio",
+            "ort": "Köln, Deutschland",
+            "personen": ["Leon Fischer", "Emma Wagner"],
+            "beschreibung1": "Ein kreativer Raum für interdisziplinäres Arbeiten.",
+            "beschreibung2": "Methoden aus Design Thinking für Produktentwicklung.",
+            "titelBild": "https://picsum.photos/800/600?random=4"
+        },
+        {
+            "name": "Nachhaltige Modewerkstatt",
+            "ort": "Frankfurt, Deutschland",
+            "personen": ["Marie Schulz", "Hannah Bauer"],
+            "beschreibung1": "Workshops für nachhaltige Modeproduktion.",
+            "beschreibung2": "Fokus auf Upcycling und Zero Waste Mode.",
+            "titelBild": "https://picsum.photos/800/600?random=5"
+        },
+        {
+            "name": "Digitale Kunstgalerie",
+            "ort": "Düsseldorf, Deutschland",
+            "personen": ["Florian Richter", "Lena Schwarz"],
+            "beschreibung1": "Virtuelle und interaktive Kunstausstellungen.",
+            "beschreibung2": "Digitale Plattform für moderne Künstler.",
+            "titelBild": "https://picsum.photos/800/600?random=6"
+        },
+        {
+            "name": "Energieeffiziente Smart Homes",
+            "ort": "Stuttgart, Deutschland",
+            "personen": ["Oliver Hoffmann", "Julia Neumann"],
+            "beschreibung1": "Forschung an nachhaltigen und vernetzten Wohnlösungen.",
+            "beschreibung2": "Integration von IoT und erneuerbaren Energien.",
+            "titelBild": "https://picsum.photos/800/600?random=7"
+        },
+        {
+            "name": "FoodTech Startup Kitchen",
+            "ort": "Leipzig, Deutschland",
+            "personen": ["Tobias König", "Sarah Becker"],
+            "beschreibung1": "Innovationen im Bereich nachhaltiger Lebensmittel.",
+            "beschreibung2": "Testlabor für alternative Proteine und neue Rezepte.",
+            "titelBild": "https://picsum.photos/800/600?random=8"
+        },
+        {
+            "name": "VR Experience Center",
+            "ort": "Dresden, Deutschland",
+            "personen": ["Christian Walter", "Nina Krüger"],
+            "beschreibung1": "Interaktive VR- und AR-Erlebnisse für verschiedene Branchen.",
+            "beschreibung2": "Workshops und Forschung an immersiven Technologien.",
+            "titelBild": "https://picsum.photos/800/600?random=9"
+        },
+        {
+            "name": "Blockchain & Finance Hub",
+            "ort": "Hannover, Deutschland",
+            "personen": ["Sebastian Meier", "Laura Fischer"],
+            "beschreibung1": "Innovation und Forschung im Bereich Blockchain-Technologie.",
+            "beschreibung2": "Entwicklung neuer Finanzprodukte auf dezentraler Basis.",
+            "titelBild": "https://picsum.photos/800/600?random=10"
+        }
+    ]
+}

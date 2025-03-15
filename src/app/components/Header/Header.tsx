@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <header className={styles.header}>
             <nav className={styles.container}>
-                <Link href="/" className={styles.link}>
+                <Link href="/" className={styles.link} prefetch={true}>
                     ABOUT
                 </Link>
 
