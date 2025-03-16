@@ -1,7 +1,7 @@
-@import '@/styles/theme.scss';
+@use "@/styles/theme.scss" as theme;
 
 .aboutPage {
-    background-color: color(black);
+    background-color: theme.color(black);
     min-height: 100%;
     padding: 0;
     position: relative;
@@ -33,7 +33,7 @@
     text-orientation: mixed;
     font-family: var(--font-geist-mono);
     font-size: 1.5rem;
-    color: color(white);
+    color: theme.color(white);
     opacity: 0.4;
     overflow: hidden;
     white-space: nowrap;

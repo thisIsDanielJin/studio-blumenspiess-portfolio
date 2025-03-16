@@ -1,4 +1,4 @@
-@import '@/styles/theme.scss';
+@use "@/styles/theme.scss" as theme;
 
 .overlay {
     position: fixed;
@@ -17,15 +17,15 @@
     position: absolute;
     bottom: calc(100% + 1rem);
     right: 0;
-    background-color: color(white);
+    background-color: theme.color(white);
     padding: 2rem;
     width: 400px;
     aspect-ratio: 1;
-    border: 2px solid color(black);
+    border: 2px solid theme.color(black);
     border-radius: 1rem;
     font-family: var(--font-geist-sans);
-    color: color(black);
-    z-index: 1000;
+    color: theme.color(black);
+    z-index: 2;
 }
 
 .closeButton {

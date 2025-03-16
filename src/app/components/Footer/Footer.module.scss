@@ -1,10 +1,12 @@
+@use "@/styles/theme.scss" as theme;
+
 .footer {
     width: 100%;
     padding: 1.5rem 2rem;
     height: var(--footer-height);
-    border-bottom: 1px solid rgba(23, 23, 23, 0.1);
-    background-color: #fff;
-    color: #000;
+    border-top: 1px solid rgba(23, 23, 23, 0.1);
+    background-color: theme.color(white);
+    color: theme.color(black);
 
     .container {
         max-width: 1200px;
@@ -14,7 +16,8 @@
         align-items: center;
     }
 
-    .leftContainer, .rightContainer {
+    .leftContainer,
+    .rightContainer {
         display: flex;
         gap: 1rem;
         align-items: center;
@@ -26,18 +29,12 @@
         font-weight: 400;
         text-decoration: none;
         padding: 0.5rem 1rem;
-        border: 0.1rem solid #000;
+        border: 0.1rem solid theme.color(black);
         border-radius: 2rem;
         transition: opacity 0.2s ease;
 
         &:hover {
             opacity: 0.7;
         }
-    }
-}
-
-@media (max-width: 768px) {
-    .footer {
-        padding: 1rem;
     }
 }

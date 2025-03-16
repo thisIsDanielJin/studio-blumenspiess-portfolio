@@ -1,13 +1,13 @@
-@import '@/styles/theme.scss';
+@use "@/styles/theme.scss" as theme;
 
 .pageContainer {
-  width: 100%;
-  height: calc(100vh - var(--header-height) - var(--footer-height));
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  background-color: color(white);
-  color: color(black);
-  position: relative;
-  overflow: auto;
-} 
+    width: 100%;
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: theme.color(white);
+    color: theme.color(black);
+    position: relative;
+    overflow: auto;
+}

@@ -3,7 +3,7 @@ import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
 import styles from "./About.module.scss";
 import Image from "next/image";
 
-export const AboutPage = () => {
+const AboutPage = () => {
     return (
         <PageTemplate className={styles.aboutPage}>
             <div className={styles.mainContent}>
@@ -24,3 +24,5 @@ export const AboutPage = () => {
         </PageTemplate>
     );
 };
+
+export default AboutPage;

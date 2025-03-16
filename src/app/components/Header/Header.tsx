@@ -1,23 +1,37 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./Header.module.scss";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
+    const pathname = usePathname();
+
     return (
         <header className={styles.header}>
             <nav className={styles.container}>
-                <Link href="/" className={styles.link} prefetch={true}>
+                <Link
+                    href="/about"
+                    className={`${styles.link} ${pathname === "/about" ? styles.activeLink : ""}`}
+                >
                     ABOUT
                 </Link>
 
-                <Link href="/projects" className={styles.projectslink}>
+                <Link
+                    href="/projects"
+                    className={`${styles.projectslink} ${pathname === "/projects" ? styles.activeLink : ""}`}
+                >
                     <p className={styles.projectslinktext}>PROJEKTE</p>
                 </Link>
 
-                <Link href="/" className={styles.link}>
+                <Link
+                    href="/contact"
+                    className={`${styles.link} ${pathname === "/contact" ? styles.activeLink : ""}`}
+                >
                     KONTAKT
                 </Link>
 
-                <Link href="/" className={styles.link}>
+                <Link href="/de" className={styles.link}>
                     DE/EN
                 </Link>
             </nav>

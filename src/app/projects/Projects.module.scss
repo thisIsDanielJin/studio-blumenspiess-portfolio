@@ -1,18 +1,18 @@
-@import '@/styles/theme.scss';
+@use "@/styles/theme.scss" as theme;
 
 .projectsPage {
     width: 100%;
     flex: 1;
-    background-color: color(white);
+    background-color: theme.color(white);
     display: flex;
     flex-direction: column;
-    color: color(black);
+    color: theme.color(black);
 }
 
 .content {
     flex: 1;
     padding: 5rem;
-} 
+}
 
 .projectsGrid {
     display: grid;
@@ -28,8 +28,8 @@
     &::-webkit-scrollbar {
         display: none;
     }
-    
+
     /* Hide scrollbar for IE, Edge and Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-} 
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
