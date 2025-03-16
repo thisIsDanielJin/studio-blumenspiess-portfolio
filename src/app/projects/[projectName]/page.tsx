@@ -11,11 +11,13 @@ import Link from "next/link";
 export default function ProjectDetail({
     params,
 }: {
-    params: { projectName: string };
+    params: Promise<{ projectName: string }>;
 }) {
     const [project, setProject] = useState<Projekt | null>(null);
     const [loading, setLoading] = useState(true);
-    const projectName = params.projectName;
+
+    // Unwrap params using React.use()
+    const projectName = React.use(params).projectName;
 
     useEffect(() => {
         // Find the project with the matching name
