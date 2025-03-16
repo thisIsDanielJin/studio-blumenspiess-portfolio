@@ -1,6 +1,5 @@
 import { useEffect, RefObject } from "react";
 
-//TODO: adjust this
 export const useHorizontalScroll = (
     scrollRef: RefObject<HTMLDivElement | null>
 ) => {
