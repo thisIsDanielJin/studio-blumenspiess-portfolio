@@ -55,45 +55,51 @@ export default function ProjectDetail({
     return (
         <PageTemplate className={styles.projectDetailPage}>
             <div className={styles.container}>
-                <div className={styles.header}>
-                    <h1 className={styles.title}>{project.name}</h1>
-                    <Link href="/projects" className={styles.backLink}>
-                        Back to Projects
-                    </Link>
+                <div className={styles.imagesContainer}>
+                    <Image
+                        src={project.titelBild}
+                        alt={project.name}
+                        width={200}
+                        height={200}
+                    />
+                    <Image
+                        src={project.titelBild}
+                        alt={project.name}
+                        width={200}
+                        height={200}
+                    />
+                    <Image
+                        src={project.titelBild}
+                        alt={project.name}
+                        width={200}
+                        height={200}
+                    />
                 </div>
-
-                <div className={styles.content}>
-                    <div className={styles.imageContainer}>
-                        <Image
-                            src={project.titelBild}
-                            alt={project.name}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className={styles.projectImage}
-                        />
-                    </div>
-
-                    <div className={styles.details}>
-                        <div className={styles.infoSection}>
-                            <h2 className={styles.sectionTitle}>Location</h2>
-                            <p>{project.ort}</p>
+                <div className={styles.infoContainer}>
+                    <div className={styles.firstBox}>
+                        <div className={styles.firstBoxUpperRow}>
+                            <div className={styles.firstBoxDecoration}>
+                                ✧ ✦ ✧ ✦ ✧
+                            </div>
+                            <div className={styles.firstBoxChat}>Chat</div>
                         </div>
-
-                        <div className={styles.infoSection}>
-                            <h2 className={styles.sectionTitle}>Team</h2>
-                            <ul className={styles.teamList}>
-                                {project.personen.map((person, index) => (
-                                    <li key={index}>{person}</li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className={styles.infoSection}>
-                            <h2 className={styles.sectionTitle}>About</h2>
-                            <p>{project.beschreibung1}</p>
-                            <p>{project.beschreibung2}</p>
+                        <div className={styles.firstBoxLowerRow}>
+                            <div className={styles.firstBoxLowerRowProject}>
+                                Project
+                            </div>
+                            <div className={styles.firstBoxLowerRowPlace}>
+                                Place
+                            </div>
+                            <div className={styles.firstBoxLowerRowName}>
+                                Name
+                            </div>
+                            <div className={styles.firstBoxLowerRowPersons}>
+                                Persons
+                            </div>
                         </div>
                     </div>
+                    <div className={styles.secondBox}>Description 2</div>
+                    <div className={styles.thirdBox}>Description 3</div>
                 </div>
             </div>
         </PageTemplate>
