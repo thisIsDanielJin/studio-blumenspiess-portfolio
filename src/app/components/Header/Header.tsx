@@ -7,6 +7,10 @@ import { usePathname } from "next/navigation";
 export const Header = () => {
     const pathname = usePathname();
 
+    // Check if current path is projects or a sub-path of projects
+    const isProjectsPath =
+        pathname === "/projects" || pathname.startsWith("/projects/");
+
     return (
         <header className={styles.header}>
             <nav className={styles.container}>
@@ -19,7 +23,7 @@ export const Header = () => {
 
                 <Link
                     href="/projects"
-                    className={`${styles.projectslink} ${pathname === "/projects" ? styles.activeLink : ""}`}
+                    className={`${styles.projectslink} ${isProjectsPath ? styles.activeLink : ""}`}
                 >
                     <p className={styles.projectslinktext}>PROJEKTE</p>
                 </Link>

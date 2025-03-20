@@ -5,6 +5,8 @@ import styles from "./Footer.module.scss";
 import { Textcard } from "../Textcard/Textcard";
 import { useState } from "react";
 import LanguageIcon from "@mui/icons-material/Language";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import MailIcon from "@mui/icons-material/Mail";
 
 type CardContent = {
     box1: string;
@@ -33,10 +35,10 @@ export const Footer = () => {
                 <div className={styles.container}>
                     <nav className={styles.leftContainer}>
                         <Link href={instagramLink} className={styles.link}>
-                            Instagram
+                            <InstagramIcon />
                         </Link>
                         <Link href={mailLink} className={styles.link}>
-                            Mail
+                            <MailIcon />
                         </Link>
                         <Link href="/" className={styles.link}>
                             <LanguageIcon />
