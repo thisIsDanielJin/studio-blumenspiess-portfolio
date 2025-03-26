@@ -2,7 +2,7 @@
 
 .header {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
 
     height: var(--header-height);
     background-color: theme.color(white);
@@ -24,7 +24,6 @@
         padding: 0.5rem 1rem;
         border: 0.1rem solid theme.color(black);
         border-radius: 2rem;
-        transition: opacity 0.2s ease;
         &:hover {
             background-color: theme.color(black);
             color: theme.color(white);
