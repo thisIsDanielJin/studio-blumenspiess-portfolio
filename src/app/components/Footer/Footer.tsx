@@ -9,6 +9,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 type CardContent = {
     box1: string;
     plus: string;
+    language: string;
 };
 
 export const Footer = () => {
@@ -19,6 +20,7 @@ export const Footer = () => {
     const cardContents: CardContent = {
         box1: "This is the content for Box 1. You can put any text here.",
         plus: "This is additional information that appears when clicking the +++ button.",
+        language: "Select your preferred language: English | Deutsch",
     };
 
     const handleCardToggle = (cardType: keyof CardContent) => {
@@ -43,9 +45,12 @@ export const Footer = () => {
                         className={styles.rightContainer}
                         style={{ position: "relative" }}
                     >
-                        <Link href="/" className={styles.link}>
+                        <button
+                            className={styles.link}
+                            onClick={() => handleCardToggle("language")}
+                        >
                             <LanguageIcon />
-                        </Link>
+                        </button>
                         <button
                             className={styles.link}
                             onClick={() => handleCardToggle("box1")}

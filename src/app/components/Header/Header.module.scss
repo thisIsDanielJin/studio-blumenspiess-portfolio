@@ -3,12 +3,12 @@
 .header {
     width: 100%;
     padding: 1rem 2rem;
+
     height: var(--header-height);
     background-color: theme.color(white);
     color: theme.color(black);
 
     .container {
-        max-width: 1200px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;

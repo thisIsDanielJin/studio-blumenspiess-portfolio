@@ -11,6 +11,7 @@ interface ProjectsCardProps {
 export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
     return (
         <Link href={`/projects/${project.name}`} className={styles.projectCard}>
+            <h3 className={styles.projectTitle}>{project.name}</h3>
             <div className={styles.imageContainer}>
                 <Image
                     src={project.titelBild}
@@ -19,9 +20,6 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className={styles.projectImage}
                 />
-            </div>
-            <div className={styles.projectInfo}>
-                <h3 className={styles.projectTitle}>{project.name}</h3>
             </div>
         </Link>
     );
