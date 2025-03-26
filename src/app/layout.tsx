@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Studio Blumenspiess",
+    title: "studio.blumenspiess",
     description: "Portfolio website for Studio Blumenspiess",
 };
 

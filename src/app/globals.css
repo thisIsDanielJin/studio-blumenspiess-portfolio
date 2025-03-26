@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --header-height: 100px;
-  --footer-height: 100px;
+  --header-height: 70px;
+  --footer-height: 70px;
 }
 
 @theme inline {

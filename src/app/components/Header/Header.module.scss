@@ -2,9 +2,8 @@
 
 .header {
     width: 100%;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     height: var(--header-height);
-    border-bottom: 1px solid rgba(theme.color(foreground), 0.1);
     background-color: theme.color(white);
     color: theme.color(black);
 
@@ -27,7 +26,8 @@
         border-radius: 2rem;
         transition: opacity 0.2s ease;
         &:hover {
-            opacity: 0.7;
+            background-color: theme.color(black);
+            color: theme.color(white);
         }
     }
 

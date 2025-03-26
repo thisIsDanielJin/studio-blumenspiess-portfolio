@@ -35,19 +35,19 @@ export const Footer = () => {
                 <div className={styles.container}>
                     <nav className={styles.leftContainer}>
                         <Link href={instagramLink} className={styles.link}>
-                            <InstagramIcon />
+                            INSTAGRAM
                         </Link>
                         <Link href={mailLink} className={styles.link}>
-                            <MailIcon />
-                        </Link>
-                        <Link href="/" className={styles.link}>
-                            <LanguageIcon />
+                            MAIL
                         </Link>
                     </nav>
                     <nav
                         className={styles.rightContainer}
                         style={{ position: "relative" }}
                     >
+                        <Link href="/" className={styles.link}>
+                            <LanguageIcon />
+                        </Link>
                         <button
                             className={styles.link}
                             onClick={() => handleCardToggle("box1")}

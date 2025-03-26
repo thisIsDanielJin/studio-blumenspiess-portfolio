@@ -15,10 +15,10 @@ export const Header = () => {
         <header className={styles.header}>
             <nav className={styles.container}>
                 <Link
-                    href="/about"
-                    className={`${styles.link} ${pathname === "/about" ? styles.activeLink : ""}`}
+                    href="/home"
+                    className={`${styles.link} ${pathname === "/home" ? styles.activeLink : ""}`}
                 >
-                    ABOUT
+                    HOME
                 </Link>
 
                 <Link
@@ -29,10 +29,10 @@ export const Header = () => {
                 </Link>
 
                 <Link
-                    href="/contact"
-                    className={`${styles.link} ${pathname === "/contact" ? styles.activeLink : ""}`}
+                    href="/about"
+                    className={`${styles.link} ${pathname === "/about" ? styles.activeLink : ""}`}
                 >
-                    KONTAKT
+                    ABOUT
                 </Link>
 
                 <Link href="/de" className={styles.link}>
