@@ -5,8 +5,6 @@ import styles from "./Footer.module.scss";
 import { Textcard } from "../Textcard/Textcard";
 import { useState } from "react";
 import LanguageIcon from "@mui/icons-material/Language";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import MailIcon from "@mui/icons-material/Mail";
 
 type CardContent = {
     box1: string;
