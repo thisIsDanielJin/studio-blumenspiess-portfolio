@@ -1,0 +1,22 @@
+{
+    "name": "studio-blumenspiess-portfolio-monorepo",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "apps/*"
+    ],
+    "scripts": {
+        "dev": "concurrently -n frontend,backend -c blue,green \"npm run dev:frontend\" \"npm run dev:backend\"",
+        "dev:frontend": "cd apps/frontend && npm run dev",
+        "dev:backend": "cd apps/backend && npm run dev",
+        "build": "concurrently -n frontend,backend -c blue,green \"npm run build:frontend\" \"npm run build:backend\"",
+        "build:frontend": "cd apps/frontend && npm run build",
+        "build:backend": "cd apps/backend && npm run build",
+        "start": "concurrently -n frontend,backend -c blue,green \"npm run start:frontend\" \"npm run start:backend\"",
+        "start:frontend": "cd apps/frontend && npm run start",
+        "start:backend": "cd apps/backend && npm run start"
+    },
+    "dependencies": {
+        "concurrently": "^9.1.2"
+    }
+}

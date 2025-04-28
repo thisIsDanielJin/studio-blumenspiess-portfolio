@@ -39,3 +39,5 @@ apps/frontend/.vercel
 # typescript
 apps/frontend/*.tsbuildinfo
 apps/frontend/next-env.d.ts
+
+node_modules
