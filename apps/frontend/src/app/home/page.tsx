@@ -5,23 +5,25 @@ import Image from "next/image";
 
 const HomePage = () => {
     return (
-        <PageTemplate className={styles.homePage}>
-            <div className={styles.mainContent}>
-                <div className={styles.verticalTextLeft}></div>
+        <>
+            <PageTemplate className={styles.homePage}>
+                <div className={styles.mainContent}>
+                    <div className={styles.verticalTextLeft}></div>
 
-                <div className={styles.contentArea}>
-                    <Image
-                        src="/img/PlaceholderAboutpage.png"
-                        alt="Home Image"
-                        className={styles.homeImage}
-                        width={1000}
-                        height={1000}
-                    />
+                    <div className={styles.contentArea}>
+                        <Image
+                            src="/img/PlaceholderAboutpage.png"
+                            alt="Home Image"
+                            className={styles.homeImage}
+                            width={1000}
+                            height={1000}
+                        />
+                    </div>
+
+                    <div className={styles.verticalTextRight}></div>
                 </div>
-
-                <div className={styles.verticalTextRight}></div>
-            </div>
-        </PageTemplate>
+            </PageTemplate>
+        </>
     );
 };
 

@@ -41,14 +41,16 @@ export default function ProjectDetail({
 
     if (!project) {
         return (
-            <PageTemplate className={styles.projectDetailPage}>
-                <div className={styles.notFound}>
-                    <h1>Project not found</h1>
-                    <Link href="/projects" className={styles.backLink}>
-                        Back to Projects
-                    </Link>
-                </div>
-            </PageTemplate>
+            <>
+                <PageTemplate className={styles.projectDetailPage}>
+                    <div className={styles.notFound}>
+                        <h1>Project not found</h1>
+                        <Link href="/projects" className={styles.backLink}>
+                            Back to Projects
+                        </Link>
+                    </div>
+                </PageTemplate>
+            </>
         );
     }
 

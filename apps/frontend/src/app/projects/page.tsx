@@ -16,15 +16,20 @@ const ProjectsPage = () => {
     useHorizontalScroll(scrollRef);
 
     return (
-        <PageTemplate className={styles.projectsPage}>
-            <div className={styles.content}>
-                <div className={styles.projectsGrid} ref={scrollRef}>
-                    {projekte.map((projekt) => (
-                        <ProjectsCard key={projekt.name} project={projekt} />
-                    ))}
+        <>
+            <PageTemplate className={styles.projectsPage}>
+                <div className={styles.content}>
+                    <div className={styles.projectsGrid} ref={scrollRef}>
+                        {projekte.map((projekt) => (
+                            <ProjectsCard
+                                key={projekt.name}
+                                project={projekt}
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </PageTemplate>
+            </PageTemplate>
+        </>
     );
 };
 
