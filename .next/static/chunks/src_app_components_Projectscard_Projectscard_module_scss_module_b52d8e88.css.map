@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/components/Projectscard/Projectscard.module.scss.module.css"],"sourcesContent":[".projectCard{display:block;position:relative;width:100%;height:100%;text-decoration:none}.imageContainer{position:relative;width:70%;height:100%;overflow:hidden;aspect-ratio:4/3}.projectImage{object-fit:cover}.projectInfo{position:absolute;bottom:0;left:0;width:70%;padding:1rem;background-color:rgba(0,0,0,.7);color:#fff;opacity:0;transition:opacity .3s ease}.projectTitle{margin:0;margin-bottom:.5rem;font-family:var(--font-geist-sans);font-size:1rem}"],"names":[],"mappings":"AAAA;;;;;;;;AAAyF;;;;;;;;AAAyF;;;;AAA+B;;;;;;;;;;;;AAAuJ"}}]
+}

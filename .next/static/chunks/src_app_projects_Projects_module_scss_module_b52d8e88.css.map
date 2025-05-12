@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/projects/Projects.module.scss.module.css"],"sourcesContent":[".projectsPage{width:100%;flex:1;background-color:#fff;display:flex;flex-direction:column;color:#000}.content{flex:1;padding:2rem 5rem;height:calc(100vh - var(--header-height) - var(--footer-height) - 4rem);display:flex;align-items:center;justify-content:center}.projectsGrid{display:grid;grid-template-rows:repeat(2, 1fr);grid-auto-flow:column;grid-auto-columns:300px;gap:2rem;overflow-x:auto;overflow-y:hidden;width:100%;height:100%;padding-bottom:1rem;-ms-overflow-style:none;scrollbar-width:none}.projectsGrid::-webkit-scrollbar{display:none}"],"names":[],"mappings":"AAAA;;;;;;;;;AAAoG;;;;;;;;;AAAiK;;;;;;;;;;;;;;;AAA8O"}}]
+}

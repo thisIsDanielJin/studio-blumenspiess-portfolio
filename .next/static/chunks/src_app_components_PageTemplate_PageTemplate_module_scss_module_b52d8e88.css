@@ -1,0 +1,14 @@
+/* [project]/src/app/components/PageTemplate/PageTemplate.module.scss.module.css [app-client] (css) */
+.PageTemplate-module-scss-module__BLIfRq__pageContainer {
+  width: 100%;
+  height: calc(100vh - var(--header-height)  - var(--footer-height));
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #000;
+  position: relative;
+  overflow: auto;
+}
+
+/*# sourceMappingURL=src_app_components_PageTemplate_PageTemplate_module_scss_module_b52d8e88.css.map*/

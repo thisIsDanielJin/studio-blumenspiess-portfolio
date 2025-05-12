@@ -1,0 +1,59 @@
+/* [project]/src/app/components/Header/Header.module.scss.module.css [app-client] (css) */
+.Header-module-scss-module__R6eCJW__header {
+  width: 100%;
+  padding: 1rem 3rem;
+  height: var(--header-height);
+  background-color: #fff;
+  color: #000;
+}
+
+.Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__link, .Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__projectslink {
+  font-family: var(--font-geist-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  padding: .5rem 1rem;
+  border: .1rem solid #000;
+  border-radius: 2rem;
+}
+
+.Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__link:hover, .Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__projectslink:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__projectslink {
+  flex-grow: 2;
+  text-align: center;
+  overflow: hidden;
+}
+
+.Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__projectslinktext {
+  transform: scaleX(5);
+  overflow: hidden;
+}
+
+.Header-module-scss-module__R6eCJW__activeLink {
+  background-color: #000;
+  color: #fff;
+}
+
+@media (width <= 768px) {
+  .Header-module-scss-module__R6eCJW__header {
+    padding: 1rem;
+  }
+
+  .Header-module-scss-module__R6eCJW__header .Header-module-scss-module__R6eCJW__nav {
+    gap: 1rem;
+  }
+}
+
+/*# sourceMappingURL=src_app_components_Header_Header_module_scss_module_b52d8e88.css.map*/
