@@ -12,11 +12,26 @@ const HomePage = () => {
 
                     <div className={styles.contentArea}>
                         <Image
-                            src="/img/PlaceholderAboutpage.png"
-                            alt="Home Image"
-                            className={styles.homeImage}
-                            width={1000}
-                            height={1000}
+                            src="/img/Cut_Schwarz_rotated.svg"
+                            alt="cutout"
+                            fill
+                            style={{
+                                zIndex: 2,
+                                objectFit: "contain",
+                                width: "100%",
+                                height: "100%",
+                            }}
+                        />
+                        <Image
+                            src="/img/tempblume.jpg"
+                            alt="cutout"
+                            fill
+                            style={{
+                                zIndex: 1,
+                                objectFit: "contain",
+                                width: "100%",
+                                height: "100%",
+                            }}
                         />
                     </div>
 

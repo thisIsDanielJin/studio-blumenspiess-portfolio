@@ -31,8 +31,11 @@
 
 .Home-module-scss-module__JAIq6a__contentArea {
   flex: 1;
-  padding: 2rem;
   z-index: 1;
+  background-color: #000;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .Home-module-scss-module__JAIq6a__verticalTextLeft, .Home-module-scss-module__JAIq6a__verticalTextRight {
