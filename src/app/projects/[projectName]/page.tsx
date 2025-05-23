@@ -1,37 +1,21 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
-import { Projekt } from "@/app/types";
-import mockprojects from "@/app/mockdata/mockprojects.json";
+import { useProjects } from "@/app/context/ProjectsContext";
 import Image from "next/image";
 import styles from "./ProjectDetail.module.scss";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default function ProjectDetail({
-    params,
-}: {
-    params: Promise<{ projectName: string }>;
-}) {
-    const [project, setProject] = useState<Projekt | null>(null);
-    const [loading, setLoading] = useState(true);
+export default function ProjectDetail() {
+    const projects = useProjects();
+    const params = useParams();
+    const projectName = params?.projectName
+        ? decodeURIComponent(params.projectName as string)
+        : "";
 
-    // Unwrap params using React.use()
-    const projectName = React.use(params).projectName;
-
-    useEffect(() => {
-        // Find the project with the matching name
-        const foundProject = mockprojects.projekte.find(
-            (p) => p.name === decodeURIComponent(projectName)
-        );
-
-        if (foundProject) {
-            setProject(foundProject);
-        }
-        setLoading(false);
-    }, [projectName]);
-
-    if (loading) {
+    if (!projects) {
         return (
             <PageTemplate className={styles.projectDetailPage}>
                 <div className={styles.loading}>Loading...</div>
@@ -39,18 +23,18 @@ export default function ProjectDetail({
         );
     }
 
+    const project = projects.find((p) => p.Name === projectName);
+
     if (!project) {
         return (
-            <>
-                <PageTemplate className={styles.projectDetailPage}>
-                    <div className={styles.notFound}>
-                        <h1>Project not found</h1>
-                        <Link href="/projects" className={styles.backLink}>
-                            Back to Projects
-                        </Link>
-                    </div>
-                </PageTemplate>
-            </>
+            <PageTemplate className={styles.projectDetailPage}>
+                <div className={styles.notFound}>
+                    <h1>Project not found</h1>
+                    <Link href="/projects" className={styles.backLink}>
+                        Back to Projects
+                    </Link>
+                </div>
+            </PageTemplate>
         );
     }
 
@@ -59,20 +43,20 @@ export default function ProjectDetail({
             <div className={styles.container}>
                 <div className={styles.imagesContainer}>
                     <Image
-                        src={project.titelBild}
-                        alt={project.name}
+                        src={project.Titelbild.url}
+                        alt={project.Name}
                         width={200}
                         height={200}
                     />
                     <Image
-                        src={project.titelBild}
-                        alt={project.name}
+                        src={project.Titelbild.url}
+                        alt={project.Name}
                         width={200}
                         height={200}
                     />
                     <Image
-                        src={project.titelBild}
-                        alt={project.name}
+                        src={project.Titelbild.url}
+                        alt={project.Name}
                         width={200}
                         height={200}
                     />

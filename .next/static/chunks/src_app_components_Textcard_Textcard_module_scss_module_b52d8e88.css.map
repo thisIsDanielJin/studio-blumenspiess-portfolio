@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/components/Textcard/Textcard.module.scss.module.css"],"sourcesContent":[".overlay{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.5);display:flex;justify-content:center;align-items:center;z-index:1000}.card{position:absolute;bottom:0;right:0;background-color:#fff;padding:2rem;width:400px;aspect-ratio:1;border:.1rem solid #000;border-radius:1rem;font-family:var(--font-geist-sans);color:#000;z-index:2;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start}.closeButton{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.2rem;cursor:pointer;font-weight:bold}.content{height:100%;overflow-y:auto;padding:1rem}.plusIcon{position:absolute;bottom:1rem;right:1rem;font-weight:bold}.buttonContent{position:absolute;bottom:.5rem;right:1rem;z-index:3;display:flex;align-items:center;justify-content:center}"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;AAA0J;;;;;;;;;;;;;;;;;;;;AAAqT;;;;;;;;;;;AAAgI;;;;;;AAAkD;;;;;;;AAAoE"}}]
-}

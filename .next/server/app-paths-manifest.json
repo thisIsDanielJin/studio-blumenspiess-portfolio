@@ -1,9 +1,11 @@
 {
-  "/about/page": "app/about/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/about/home-meta/page": "app/about/home-meta/page.js",
   "/home-cutout/page": "app/home-cutout/page.js",
-  "/home/page": "app/home/page.js",
-  "/page": "app/page.js",
+  "/about/page": "app/about/page.js",
   "/projects/[projectName]/page": "app/projects/[projectName]/page.js",
+  "/page": "app/page.js",
+  "/home/page": "app/home/page.js",
   "/projects/page": "app/projects/page.js"
 }

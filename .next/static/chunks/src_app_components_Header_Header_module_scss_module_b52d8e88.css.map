@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/components/Header/Header.module.scss.module.css"],"sourcesContent":[".header{width:100%;padding:1rem 3rem;height:var(--header-height);background-color:#fff;color:#000}.header .container{margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:4rem}.header .link,.header .projectslink{font-family:var(--font-geist-sans);font-size:1rem;font-weight:400;text-decoration:none;padding:.5rem 1rem;border:.1rem solid #000;border-radius:2rem}.header .link:hover,.header .projectslink:hover{background-color:#000;color:#fff}.header .projectslink{flex-grow:2;text-align:center;overflow:hidden;display:flex;justify-content:center;align-items:center}.header .projectslinktext{white-space:nowrap;transform-origin:center;display:inline-block}.activeLink{background-color:#000;color:#fff}@media(max-width: 768px){.header{padding:1rem}.header .nav{gap:1rem}}"],"names":[],"mappings":"AAAA;;;;;;;;AAAkG;;;;;;;;AAAwG;;;;;;;;;;AAAyL;;;;;AAAiF;;;;;;;;;AAA2H;;;;;;AAA0F;;;;;AAA6C;EAAyB;;;;EAAqB"}}]
-}
