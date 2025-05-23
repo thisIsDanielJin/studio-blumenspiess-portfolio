@@ -7,6 +7,7 @@ import Image from "next/image";
 import styles from "./ProjectDetail.module.scss";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { getStrapiMedia } from "@/app/utils/getStrapiMedia";
 
 export default function ProjectDetail() {
     const projects = useProjects();
@@ -43,19 +44,19 @@ export default function ProjectDetail() {
             <div className={styles.container}>
                 <div className={styles.imagesContainer}>
                     <Image
-                        src={project.Titelbild.url}
+                        src={getStrapiMedia(project.Titelbild.url)}
                         alt={project.Name}
                         width={200}
                         height={200}
                     />
                     <Image
-                        src={project.Titelbild.url}
+                        src={getStrapiMedia(project.Titelbild.url)}
                         alt={project.Name}
                         width={200}
                         height={200}
                     />
                     <Image
-                        src={project.Titelbild.url}
+                        src={getStrapiMedia(project.Titelbild.url)}
                         alt={project.Name}
                         width={200}
                         height={200}
@@ -80,12 +81,16 @@ export default function ProjectDetail() {
                                 Name
                             </div>
                             <div className={styles.firstBoxLowerRowPersons}>
-                                Persons
+                                {project.Personinnen}
                             </div>
                         </div>
                     </div>
-                    <div className={styles.secondBox}>Description 2</div>
-                    <div className={styles.thirdBox}>Description 3</div>
+                    <div className={styles.secondBox}>
+                        {project.Beschreibung_1}
+                    </div>
+                    <div className={styles.thirdBox}>
+                        {project.Beschreibung_2}
+                    </div>
                 </div>
             </div>
         </PageTemplate>
