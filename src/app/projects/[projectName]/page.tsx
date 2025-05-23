@@ -49,18 +49,15 @@ export default function ProjectDetail() {
                         width={200}
                         height={200}
                     />
-                    <Image
-                        src={getStrapiMedia(project.Titelbild.url)}
-                        alt={project.Name}
-                        width={200}
-                        height={200}
-                    />
-                    <Image
-                        src={getStrapiMedia(project.Titelbild.url)}
-                        alt={project.Name}
-                        width={200}
-                        height={200}
-                    />
+                    {project.Weitere_Bilder.map((image) => (
+                        <Image
+                            key={image.id}
+                            src={getStrapiMedia(image.url)}
+                            alt={project.Name}
+                            width={200}
+                            height={200}
+                        />
+                    ))}
                 </div>
                 <div className={styles.infoContainer}>
                     <div className={styles.firstBox}>
@@ -72,16 +69,18 @@ export default function ProjectDetail() {
                         </div>
                         <div className={styles.firstBoxLowerRow}>
                             <div className={styles.firstBoxLowerRowProject}>
-                                Project
+                                {project.Name}
                             </div>
                             <div className={styles.firstBoxLowerRowPlace}>
-                                Place
+                                {project.Ort}
                             </div>
                             <div className={styles.firstBoxLowerRowName}>
-                                Name
+                                {project.Untertitel}
                             </div>
                             <div className={styles.firstBoxLowerRowPersons}>
-                                {project.Personinnen}
+                                {project.Personinnen.map((person) => (
+                                    <div key={person.id}>{person.Person}</div>
+                                ))}
                             </div>
                         </div>
                     </div>

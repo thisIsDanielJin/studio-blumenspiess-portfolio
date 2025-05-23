@@ -2,7 +2,7 @@ export type Projekt = {
     id: number;
     Name: string;
     Ort: string;
-    Personinnen: string;
+    Personinnen: Person[];
     Beschreibung_1: string;
     Beschreibung_2: string;
     createdAt: string;
@@ -11,6 +11,12 @@ export type Projekt = {
     documentId: string;
     Titelbild: Bild;
     Weitere_Bilder: Bild[];
+    Untertitel: string;
+};
+
+export type Person = {
+    id: number;
+    Person: string;
 };
 
 export type Bild = {

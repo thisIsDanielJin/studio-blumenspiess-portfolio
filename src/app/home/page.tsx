@@ -4,6 +4,11 @@ import styles from "./Home.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
+/**
+ * HomePage Component
+ * Displays the main landing page with a masked image effect using an SVG cutout
+ * @returns The rendered home page component
+ */
 const HomePage = () => {
     return (
         <>
@@ -12,31 +17,15 @@ const HomePage = () => {
                     <div className={styles.verticalTextLeft}></div>
 
                     <div className={styles.contentArea}>
-                        <Link href="/home-cutout">
-                            <Image
-                                src="/img/Cut_Schwarz_rotated.svg"
-                                alt="cutout"
-                                fill
-                                style={{
-                                    zIndex: 2,
-                                    objectFit: "contain",
-                                    width: "100%",
-                                    height: "100%",
-                                }}
-                            />
-                        </Link>
-
-                        <Link href="/home-meta">
+                        <Link
+                            href="/home-cutout"
+                            className={styles.maskedImageContainer}
+                        >
                             <Image
                                 src="/img/tempblume.jpg"
-                                alt="cutout"
+                                alt="masked flower image"
                                 fill
-                                style={{
-                                    zIndex: 1,
-                                    objectFit: "contain",
-                                    width: "100%",
-                                    height: "100%",
-                                }}
+                                className={styles.maskedImage}
                             />
                         </Link>
                     </div>

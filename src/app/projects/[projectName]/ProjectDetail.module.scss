@@ -49,17 +49,82 @@
 
 .firstBoxLowerRow {
     display: grid;
-    flex-direction: row;
-    gap: 1rem;
-    flex: 2;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
     background-color: theme.color(white);
     border: 1px solid theme.color(black);
-    border-radius: 3rem;
-    padding: 1rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    font-size: 2.5rem;
+    border-radius: 2rem;
+    padding: 2rem 2.5rem;
+    min-height: 240px;
+    position: relative;
+    column-gap: 2rem;
+}
+
+.firstBoxLowerRowProjectGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    width: 100%;
+}
+
+.firstBoxLowerRowProject {
+    font-size: 1.6rem;
+    font-family: 'Inter', 'Raleway', Arial, sans-serif;
+    font-weight: 500;
+    color: theme.color(black);
+    line-height: 1.15;
+    margin-bottom: 0.2rem;
+}
+
+.firstBoxLowerRowPlace {
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+    margin-top: 0;
+}
+
+.firstBoxLowerRowName {
+    font-size: 1.1rem;
+    color: theme.color(gray);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+}
+
+.firstBoxLowerRowPersons {
+    width: 100%;
+  
+    border-radius: 0.6rem;
     
+    margin-top: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 1rem;
+
+    box-shadow: none;
+    border: none;
+    max-height: 7rem;
+    overflow-y: auto;
+
+
+}
+
+.firstBoxLowerRowPersons > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.2rem 0;
+    line-height: 1.3;
+    font-size: 1rem;
+}
+
+.firstBoxLowerRowPersons > div::before {
+    font-size: 1.1em;
+    margin-right: 0.2em;
 }
 
 .firstBoxDecoration {
