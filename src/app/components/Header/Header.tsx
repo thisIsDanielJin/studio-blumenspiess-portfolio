@@ -3,9 +3,11 @@
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import { usePathname } from "next/navigation";
+import { useTextScale } from "@/app/hooks/useTextScale";
 
 export const Header = () => {
     const pathname = usePathname();
+    const { containerRef, textRef } = useTextScale();
 
     // Check if current path is projects or a sub-path of projects
     const isProjectsPath =
@@ -24,8 +26,11 @@ export const Header = () => {
                 <Link
                     href="/projects"
                     className={`${styles.projectslink} ${isProjectsPath ? styles.activeLink : ""}`}
+                    ref={containerRef}
                 >
-                    <p className={styles.projectslinktext}>PROJEKTE</p>
+                    <p className={styles.projectslinktext} ref={textRef}>
+                        PROJEKTE
+                    </p>
                 </Link>
 
                 <Link

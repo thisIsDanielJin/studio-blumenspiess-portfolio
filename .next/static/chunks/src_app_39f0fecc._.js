@@ -1,4 +1,4 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/src_app_components_0657d144._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/src_app_39f0fecc._.js", {
 
 "[project]/src/app/components/Header/Header.module.scss.module.css [app-client] (css module)": ((__turbopack_context__) => {
 
@@ -13,6 +13,63 @@ __turbopack_context__.v({
   "projectslink": "Header-module-scss-module__R6eCJW__projectslink",
   "projectslinktext": "Header-module-scss-module__R6eCJW__projectslinktext",
 });
+}}),
+"[project]/src/app/hooks/useTextScale.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+/**
+ * Custom hook to dynamically scale text horizontally to fit its container
+ * @returns {Object} Object containing refs for the container and text elements
+ */ __turbopack_context__.s({
+    "useTextScale": (()=>useTextScale)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var _s = __turbopack_context__.k.signature();
+;
+const useTextScale = ()=>{
+    _s();
+    const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const textRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "useTextScale.useEffect": ()=>{
+            if (!containerRef.current || !textRef.current) return;
+            const updateScale = {
+                "useTextScale.useEffect.updateScale": ()=>{
+                    const container = containerRef.current;
+                    const text = textRef.current;
+                    if (!container || !text) return;
+                    // Reset scale to measure original width
+                    text.style.transform = "scaleX(1)";
+                    const textWidth = text.offsetWidth;
+                    const containerWidth = container.offsetWidth;
+                    // Calculate and apply new scale
+                    const scale = containerWidth / textWidth;
+                    text.style.transform = `scaleX(${scale})`;
+                }
+            }["useTextScale.useEffect.updateScale"];
+            // Initial scale
+            updateScale();
+            // Create ResizeObserver to handle container size changes
+            const resizeObserver = new ResizeObserver(updateScale);
+            resizeObserver.observe(containerRef.current);
+            return ({
+                "useTextScale.useEffect": ()=>{
+                    resizeObserver.disconnect();
+                }
+            })["useTextScale.useEffect"];
+        }
+    }["useTextScale.useEffect"], []);
+    return {
+        containerRef,
+        textRef
+    };
+};
+_s(useTextScale, "+zA67rp87Mddr25mzy7oxhufayU=");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
 }}),
 "[project]/src/app/components/Header/Header.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -367,4 +424,4 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 }}),
 }]);
 
-//# sourceMappingURL=src_app_components_0657d144._.js.map
+//# sourceMappingURL=src_app_39f0fecc._.js.map
