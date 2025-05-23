@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
         includePaths: ["./src/styles"],
     },
     images: {
-        domains: ["picsum.photos"],
+        domains: [
+            "picsum.photos",
+            "studio-blumenspiess-cms-production.up.railway.app",
+        ],
     },
 };
 

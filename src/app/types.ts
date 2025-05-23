@@ -1,9 +1,49 @@
 export type Projekt = {
-    name: string;
-    ort: string;
-    personen: string[];
-    beschreibung1: string;
-    beschreibung2: string;
-    titelBild: string;
+    id: number;
+    Name: string;
+    Ort: string;
+    Personinnen: string;
+    Beschreibung_1: string;
+    Beschreibung_2: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    documentId: string;
+    Titelbild: Bild;
+    Weitere_Bilder: Bild[];
 };
 
+export type Bild = {
+    alternativeText: string;
+    caption: string;
+    createdAt: string;
+    documentId: string;
+    ext: string;
+    formats: {
+        small: {
+            url: string;
+        };
+        medium: {
+            url: string;
+        };
+        large: {
+            url: string;
+        };
+        thumbnail: {
+            url: string;
+        };
+    };
+    hash: string;
+    height: number;
+    id: number;
+    mime: string;
+    name: string;
+    previewUrl: string;
+    provider: string;
+    provider_metadata: string;
+    size: number;
+    publishedAt: "string";
+    updatedAt: "string";
+    width: number;
+    url: string;
+};

@@ -111,17 +111,22 @@
 
 .Textcard-module-scss-module__vg0Jsa__card {
   position: absolute;
-  bottom: calc(100% + 1rem);
+  bottom: 0;
   right: 0;
   background-color: #fff;
   padding: 2rem;
   width: 400px;
   aspect-ratio: 1;
-  border: 2px solid #000;
+  border: .1rem solid #000;
   border-radius: 1rem;
   font-family: var(--font-geist-sans);
   color: #000;
   z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .Textcard-module-scss-module__vg0Jsa__closeButton {
@@ -146,6 +151,16 @@
   bottom: 1rem;
   right: 1rem;
   font-weight: bold;
+}
+
+.Textcard-module-scss-module__vg0Jsa__buttonContent {
+  position: absolute;
+  bottom: .5rem;
+  right: 1rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
