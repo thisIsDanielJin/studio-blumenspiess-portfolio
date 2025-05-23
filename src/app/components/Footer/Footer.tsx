@@ -75,7 +75,7 @@ export const Footer = () => {
                         <LanguageIcon />,
                         "Select language"
                     )}
-                    {renderActionButton("box1", <>BOX1</>, "Open Box 1")}
+                    {renderActionButton("box1", <>BOX</>, "Open Box 1")}
                     {renderActionButton(
                         "plus",
                         <b>+++</b>,
