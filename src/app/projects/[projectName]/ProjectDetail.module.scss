@@ -18,11 +18,42 @@
 }
 
 .imagesContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
     flex: 3;
     position: relative;
-    overflow: hidden;
+    overflow-x: auto;
+    padding: 1rem 0;
+    align-items: flex-start;
+
+    img {
+        width: auto;
+        height: auto;
+        max-width: 600px;
+        max-height: 400px;
+        flex-shrink: 0;
+    }
+
+    /* Custom scrollbar for WebKit browsers */
+    &::-webkit-scrollbar {
+        height: 8px;
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Custom scrollbar for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
 }
 
 .infoContainer {
@@ -96,21 +127,36 @@
 
 .firstBoxLowerRowPersons {
     width: 100%;
-  
     border-radius: 0.6rem;
-    
     margin-top: 0.7rem;
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
     font-size: 1rem;
-
     box-shadow: none;
     border: none;
     max-height: 7rem;
     overflow-y: auto;
 
+    /* Custom scrollbar for WebKit browsers */
+    &::-webkit-scrollbar {
+        width: 8px;
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
 
+    /* Custom scrollbar for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
 }
 
 .firstBoxLowerRowPersons > div {
@@ -148,6 +194,12 @@
     background-color: theme.color(white);
     border: 1px solid theme.color(black);
     border-radius: 2rem;
+    padding: 1rem;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .secondBox,

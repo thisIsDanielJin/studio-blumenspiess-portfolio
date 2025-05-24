@@ -18,9 +18,10 @@ export const Footer = () => {
     const [activeCard, setActiveCard] = useState<CardType | null>(null);
 
     const cardContents: CardContent = {
-        box1: "This is the content for Box 1. You can put any text here.",
-        plus: "This is additional information that appears when clicking the +++ button.",
-        language: "Select your preferred language: English | Deutsch",
+        box1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        plus: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        language:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     };
 
     const handleCardToggle = (cardType: CardType) => {

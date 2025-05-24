@@ -2,38 +2,40 @@ import React from "react";
 import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
 import styles from "./Home.module.scss";
 import Image from "next/image";
-import Link from "next/link";
 
 /**
  * HomePage Component
- * Displays the main landing page with a masked image effect using an SVG cutout
+ * Displays the main landing page with a cutout SVG overlay on top of a background image
  * @returns The rendered home page component
  */
 const HomePage = () => {
     return (
-        <>
-            <PageTemplate className={styles.homePage}>
-                <div className={styles.mainContent}>
-                    <div className={styles.verticalTextLeft}></div>
+        <PageTemplate className={styles.homePage}>
+            <div className={styles.mainContent}>
+                <div className={styles.verticalTextLeft}></div>
 
-                    <div className={styles.contentArea}>
-                        <Link
-                            href="/home-cutout"
-                            className={styles.maskedImageContainer}
-                        >
-                            <Image
-                                src="/img/tempblume.jpg"
-                                alt="masked flower image"
-                                fill
-                                className={styles.maskedImage}
+                <div className={styles.contentArea}>
+                    <div className={styles.imageContainer}>
+                        <Image
+                            src="/img/tempblume.jpg"
+                            alt="background flower image"
+                            fill
+                            className={styles.backgroundImage}
+                            priority
+                        />
+                        <div className={styles.cutoutContainer}>
+                            <img
+                                src="/img/Cut_Schwarz.svg"
+                                alt="cutout overlay"
+                                className={styles.cutoutSvg}
                             />
-                        </Link>
+                        </div>
                     </div>
-
-                    <div className={styles.verticalTextRight}></div>
                 </div>
-            </PageTemplate>
-        </>
+
+                <div className={styles.verticalTextRight}></div>
+            </div>
+        </PageTemplate>
     );
 };
 

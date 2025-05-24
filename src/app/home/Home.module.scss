@@ -3,7 +3,7 @@
 .homePage {
     background-color: theme.color(black);
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 0;
     position: relative;
     overflow: hidden;
@@ -23,27 +23,57 @@
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.maskedImageContainer {
+.imageContainer {
     position: relative;
     width: 100%;
     height: 100%;
-    display: block;
-    mask-image: url('/img/Cut_Schwarz_Invertiert_rotiert.svg');
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-image: url('/img/Cut_Schwarz_Invertiert_rotiert.svg');
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.maskedImage {
+.backgroundImage {
     object-fit: contain;
     width: 100%;
     height: 100%;
+    position: relative;
+}
+
+.cutoutContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.cutoutSvg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+}
+
+// Media query for wider screens
+@media (min-width: 1024px) {
+    .cutoutSvg {
+        content: url('/img/Cut_Schwarz_rotated.svg');
+    }
 }
 
 .verticalTextLeft,

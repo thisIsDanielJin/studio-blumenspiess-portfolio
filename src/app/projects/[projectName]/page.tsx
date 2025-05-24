@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
 import { useProjects } from "@/app/context/ProjectsContext";
 import Image from "next/image";
@@ -8,10 +8,13 @@ import styles from "./ProjectDetail.module.scss";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getStrapiMedia } from "@/app/utils/getStrapiMedia";
+import { useHorizontalScroll } from "@/app/hooks/useHorizontalScroll";
 
 export default function ProjectDetail() {
     const projects = useProjects();
     const params = useParams();
+    const imagesContainerRef = useRef<HTMLDivElement>(null);
+    useHorizontalScroll(imagesContainerRef);
     const projectName = params?.projectName
         ? decodeURIComponent(params.projectName as string)
         : "";
@@ -38,11 +41,13 @@ export default function ProjectDetail() {
             </PageTemplate>
         );
     }
-
     return (
         <PageTemplate className={styles.projectDetailPage}>
             <div className={styles.container}>
-                <div className={styles.imagesContainer}>
+                <div
+                    className={styles.imagesContainer}
+                    ref={imagesContainerRef}
+                >
                     <Image
                         src={getStrapiMedia(project.Titelbild.url)}
                         alt={project.Name}
@@ -65,7 +70,20 @@ export default function ProjectDetail() {
                             <div className={styles.firstBoxDecoration}>
                                 ✧ ✦ ✧ ✦ ✧
                             </div>
-                            <div className={styles.firstBoxChat}>Chat</div>
+                            <div className={styles.firstBoxChat}>
+                                <svg
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </div>
                         </div>
                         <div className={styles.firstBoxLowerRow}>
                             <div className={styles.firstBoxLowerRowProject}>

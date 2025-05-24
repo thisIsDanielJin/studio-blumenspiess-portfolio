@@ -41,5 +41,5 @@ apps/frontend/*.tsbuildinfo
 apps/frontend/next-env.d.ts
 
 node_modules
-.next
+.next/*
 /.next
