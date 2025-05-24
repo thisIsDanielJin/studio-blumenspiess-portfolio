@@ -31,13 +31,31 @@ const ProjectsPage = () => {
     }, []);
     console.log(projekte);
 
+    const copyProject = [
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+        ...projekte,
+    ];
+
     return (
         <>
             <PageTemplate className={styles.projectsPage}>
                 <div className={styles.content}>
                     <div className={styles.projectsGrid} ref={scrollRef}>
-                        {projekte.map((projekt) => (
-                            <ProjectsCard key={projekt.id} project={projekt} />
+                        {copyProject.map((projekt, idx) => (
+                            <ProjectsCard
+                                key={projekt.id + idx}
+                                project={projekt}
+                            />
                         ))}
                     </div>
                 </div>
