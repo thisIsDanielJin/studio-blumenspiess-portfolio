@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
 import { useProjects } from "@/app/context/ProjectsContext";
 import Image from "next/image";
@@ -9,11 +9,13 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getStrapiMedia } from "@/app/utils/getStrapiMedia";
 import { useHorizontalScroll } from "@/app/hooks/useHorizontalScroll";
+import { Textcard } from "@/app/components/Textcard/Textcard";
 
 export default function ProjectDetail() {
     const projects = useProjects();
     const params = useParams();
     const imagesContainerRef = useRef<HTMLDivElement>(null);
+    const [isChatCardOpen, setIsChatCardOpen] = useState(false);
     useHorizontalScroll(imagesContainerRef);
     const projectName = params?.projectName
         ? decodeURIComponent(params.projectName as string)
@@ -41,6 +43,22 @@ export default function ProjectDetail() {
             </PageTemplate>
         );
     }
+
+    const chatIcon = (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+    );
+
     return (
         <PageTemplate className={styles.projectDetailPage}>
             <div className={styles.container}>
@@ -70,19 +88,25 @@ export default function ProjectDetail() {
                             <div className={styles.firstBoxDecoration}>
                                 ✧ ✦ ✧ ✦ ✧
                             </div>
-                            <div className={styles.firstBoxChat}>
-                                <svg
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
+                            <div style={{ position: "relative" }}>
+                                <button
+                                    className={styles.firstBoxChat}
+                                    onClick={() =>
+                                        setIsChatCardOpen(!isChatCardOpen)
+                                    }
+                                    aria-label="Open chat"
+                                    tabIndex={0}
                                 >
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                                </svg>
+                                    {chatIcon}
+                                </button>
+                                {isChatCardOpen && (
+                                    <Textcard
+                                        content={`Project:\n\n${project.Beschreibung_2}`}
+                                        isOpen={true}
+                                        onClose={() => setIsChatCardOpen(false)}
+                                        buttonContent={chatIcon}
+                                    />
+                                )}
                             </div>
                         </div>
                         <div className={styles.firstBoxLowerRow}>
