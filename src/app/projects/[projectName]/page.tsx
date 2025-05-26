@@ -59,6 +59,8 @@ export default function ProjectDetail() {
         </svg>
     );
 
+    console.log(project);
+
     return (
         <PageTemplate className={styles.projectDetailPage}>
             <div className={styles.container}>

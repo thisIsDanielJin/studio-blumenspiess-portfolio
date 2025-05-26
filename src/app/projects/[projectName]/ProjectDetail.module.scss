@@ -29,9 +29,9 @@
 
     img {
         width: auto;
-        height: auto;
-        max-width: 600px;
-        max-height: 400px;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
         flex-shrink: 0;
     }
 
@@ -135,7 +135,7 @@
     font-size: 1rem;
     box-shadow: none;
     border: none;
-    max-height: 7rem;
+    max-height: 7;
     overflow-y: auto;
 
     /* Custom scrollbar for WebKit browsers */

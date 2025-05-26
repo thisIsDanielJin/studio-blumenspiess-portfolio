@@ -1,3 +1,5 @@
 {
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/projects/[projectName]/page": "app/projects/[projectName]/page.js",
   "/projects/page": "app/projects/page.js"
 }
