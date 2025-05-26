@@ -15,24 +15,59 @@ import { PageTemplate } from "@/app/components/PageTemplate/PageTemplate";
 import { ProjectsCard } from "@/app/components/Projectscard/Projectscard";
 import axios from "axios";
 import { Projekt } from "../types";
-import { useKeenSlider } from "keen-slider/react";
+import { useKeenSlider, KeenSliderInstance } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
 const PROJECTS_PER_SLIDE = 6;
 
+// Wheel control function for horizontal scrolling
+const WheelControls = (slider: KeenSliderInstance) => {
+    let touchTimeout: NodeJS.Timeout;
+    let wheelActive: boolean;
+
+    function eventWheel(e: WheelEvent) {
+        e.preventDefault();
+
+        if (!wheelActive) {
+            wheelActive = true;
+        }
+
+        // Use deltaY (vertical scroll) to move slides horizontally
+        if (e.deltaY > 0) {
+            slider.next();
+        } else {
+            slider.prev();
+        }
+
+        clearTimeout(touchTimeout);
+        touchTimeout = setTimeout(() => {
+            wheelActive = false;
+        }, 50);
+    }
+
+    slider.on("created", () => {
+        slider.container.addEventListener("wheel", eventWheel, {
+            passive: false,
+        });
+    });
+};
+
 const ProjectsPage: React.FC = () => {
     const [projects, setProjects] = useState<Projekt[]>([]);
-    const [sliderRef] = useKeenSlider({
-        slides: {
-            perView: 1,
-            spacing: 0,
+    const [sliderRef] = useKeenSlider(
+        {
+            slides: {
+                perView: 1,
+                spacing: 0,
+            },
+            loop: false,
+            mode: "snap",
+            created(s) {
+                console.log("Slider created with", s.slides.length, "slides");
+            },
         },
-        loop: false,
-        mode: "snap",
-        created(s) {
-            console.log("Slider created with", s.slides.length, "slides");
-        },
-    });
+        [WheelControls]
+    );
 
     useEffect(() => {
         const fetchProjects = async () => {
