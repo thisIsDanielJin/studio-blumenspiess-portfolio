@@ -1,7 +1,7 @@
 import { useEffect, RefObject } from "react";
 
 /**
- * Hook to enable horizontal scrolling with mouse wheel
+ * Hook to enable smooth horizontal scrolling with mouse wheel
  * @param scrollRef - Reference to the scrollable container element
  */
 export const useHorizontalScroll = (
@@ -11,6 +11,9 @@ export const useHorizontalScroll = (
         const scrollElement = scrollRef.current;
 
         if (!scrollElement) return;
+
+        // Add smooth scrolling behavior
+        scrollElement.style.scrollBehavior = "smooth";
 
         const handleWheel = (e: WheelEvent) => {
             // Check if we're at the edges of the scroll container
@@ -31,8 +34,13 @@ export const useHorizontalScroll = (
             e.preventDefault();
 
             // Use deltaX for horizontal scrolling, fallback to deltaY if deltaX is 0
-            const scrollAmount = e.deltaX || e.deltaY;
-            scrollElement.scrollLeft += scrollAmount;
+            // Multiply by 1.5 to make the scroll speed more natural
+            const scrollAmount = (e.deltaX || e.deltaY) * 1.5;
+
+            // Use requestAnimationFrame for smoother animation
+            requestAnimationFrame(() => {
+                scrollElement.scrollLeft += scrollAmount;
+            });
         };
 
         scrollElement.addEventListener("wheel", handleWheel, {
@@ -41,6 +49,8 @@ export const useHorizontalScroll = (
 
         return () => {
             scrollElement.removeEventListener("wheel", handleWheel);
+            // Remove smooth scrolling behavior on cleanup
+            scrollElement.style.scrollBehavior = "auto";
         };
     }, [scrollRef]);
 };
