@@ -17,6 +17,7 @@ import axios from "axios";
 import { Projekt } from "../types";
 import { useKeenSlider, KeenSliderInstance } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { FiFilter } from "react-icons/fi";
 
 const PROJECTS_PER_SLIDE = 6;
 
@@ -109,6 +110,9 @@ const ProjectsPage: React.FC = () => {
     return (
         <PageTemplate className={styles.projectsPage}>
             <div className={styles.content}>
+                <div className={styles.filterContainer}>
+                    <FiFilter className={styles.filterIcon} />
+                </div>
                 <div
                     ref={sliderRef}
                     className={`keen-slider ${styles.projectsGrid}`}

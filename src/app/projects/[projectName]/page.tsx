@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { getStrapiMedia } from "@/app/utils/getStrapiMedia";
 import { useHorizontalScroll } from "@/app/hooks/useHorizontalScroll";
-import { Textcard } from "@/app/components/Textcard/Textcard";
+import { LeftAnchoredTextcard } from "@/app/components/LeftAnchoredTextcard/LeftAnchoredTextcard";
 
 export default function ProjectDetail() {
     const projects = useProjects();
@@ -102,8 +102,8 @@ export default function ProjectDetail() {
                                     {chatIcon}
                                 </button>
                                 {isChatCardOpen && (
-                                    <Textcard
-                                        content={`Project:\n\n${project.Beschreibung_2}`}
+                                    <LeftAnchoredTextcard
+                                        content={project.Beschreibung_2}
                                         isOpen={true}
                                         onClose={() => setIsChatCardOpen(false)}
                                         buttonContent={chatIcon}
