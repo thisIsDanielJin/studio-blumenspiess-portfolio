@@ -40,7 +40,7 @@ export const Header = () => {
                     ABOUT
                 </Link>
 
-                <Link href="/de" className={styles.link}>
+                <Link href="/home" className={styles.link}>
                     DE/EN
                 </Link>
             </nav>
