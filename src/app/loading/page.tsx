@@ -83,8 +83,7 @@ const Model: React.FC = () => {
                 clearcoatRoughness: 0.0,
                 reflectivity: 1.5,
                 envMap: texture,
-                ior: 2.5,
-                envMapIntensity: 1,
+                envMapIntensity: 1.2,
             });
         }
     });
@@ -109,24 +108,23 @@ const LoadingPage = () => {
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
-                    <Canvas
-                        camera={{ position: [0, 0, 5], fov: 45 }}
-                        dpr={isMobile ? 1 : [1, 2]}
-                    >
+                    <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
                         <color attach="background" args={["#fff"]} />
-                        <ambientLight intensity={0.5} />
+                        <ambientLight intensity={1.5} />
+                        <directionalLight intensity={1.5} />
                         <spotLight
                             position={[10, 10, 10]}
                             angle={0.15}
                             penumbra={1}
-                            intensity={1}
+                            intensity={2}
                         />
                         <spotLight
                             position={[-10, -10, -10]}
                             angle={0.15}
                             penumbra={1}
-                            intensity={0.5}
+                            intensity={2}
                         />
+                        <pointLight position={[0, 0, 0]} intensity={1.5} />
                         <Suspense fallback={<LoadingMessage />}>
                             <Model />
                         </Suspense>
