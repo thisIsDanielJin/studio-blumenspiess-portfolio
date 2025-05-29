@@ -8,11 +8,6 @@ import styles from "./Loading.module.scss";
 import { LoadingFooter } from "./LoadingFooter";
 
 /**
- * Helper to detect mobile devices
- */
-const isMobile = typeof window !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-/**
  * LoadingMessage Component
  * Displays a loading message while the 3D model is being loaded
  * Uses Three.js Text component for proper rendering within Canvas
