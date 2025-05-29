@@ -1,44 +1,71 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
+import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import styles from "./Loading.module.scss";
 import { LoadingFooter } from "./LoadingFooter";
 
 /**
+ * Helper function to get sRGBEncoding in a type-safe way
+ * @returns The sRGBEncoding value
+ */
+const getSRGBEncoding = (): number => {
+    // Try to get sRGBEncoding from THREE, fallback to 3001 if not found
+    return (
+        (THREE as unknown as { sRGBEncoding?: number }).sRGBEncoding ??
+        (THREE as unknown as { ColorManagement?: { sRGBEncoding?: number } })
+            .ColorManagement?.sRGBEncoding ??
+        3001
+    );
+};
+
+/**
  * Model Component
  * Renders the 3D model using React Three Fiber with continuous rotation and chrome material
+ * Uses a custom environment map for realistic chrome reflections
  * @returns The rendered 3D model component
  */
-const Model = () => {
+const Model: React.FC = () => {
     const { scene } = useGLTF("/models/Chrome_Logo_Blas.gltf");
     const modelRef = useRef<THREE.Group>(null);
+    const texture = useLoader(
+        THREE.TextureLoader,
+        "/img/Panorama_Chrome_Edit.jpg"
+    );
+    const { scene: threeScene } = useThree();
+
+    // Set up the environment map
+    texture.mapping = THREE.EquirectangularReflectionMapping;
+    // @ts-expect-error: encoding is a number property, workaround for type issues
+    texture.encoding = getSRGBEncoding() as unknown as number;
+    threeScene.environment = texture;
 
     // Apply chrome material to all meshes in the scene
-    scene.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-            child.material = new THREE.MeshPhysicalMaterial({
+    scene.traverse((child: THREE.Object3D) => {
+        if ((child as THREE.Mesh).isMesh) {
+            (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
                 color: 0xffffff,
                 metalness: 1,
                 roughness: 0.1,
                 clearcoat: 1,
                 clearcoatRoughness: 0.1,
                 reflectivity: 1,
+                envMap: texture,
                 envMapIntensity: 1,
             });
         }
     });
 
-    useFrame((state, delta) => {
+    useFrame((_state, delta) => {
         if (modelRef.current) {
             // Rotate 30 degrees per second (0.5 radians per second)
             modelRef.current.rotation.y += delta * 0.5;
         }
     });
 
-    return <primitive ref={modelRef} object={scene} scale={3.5} />;
+    return <primitive ref={modelRef} object={scene} scale={4.5} />;
 };
 
 /**
@@ -51,7 +78,7 @@ const LoadingPage = () => {
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
-                    <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                    <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
                         <color attach="background" args={["#fff"]} />
                         <ambientLight intensity={0.5} />
                         <spotLight
@@ -66,7 +93,6 @@ const LoadingPage = () => {
                             penumbra={1}
                             intensity={0.5}
                         />
-                        <Environment preset="city" />
                         <Suspense fallback={null}>
                             <Model />
                         </Suspense>
