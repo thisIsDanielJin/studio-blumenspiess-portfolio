@@ -1,11 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import * as THREE from "three";
 import styles from "./Loading.module.scss";
+import { LoadingFooter } from "./LoadingFooter";
 
 /**
  * Model Component
@@ -47,18 +47,12 @@ const Model = () => {
  * @returns The rendered loading page component
  */
 const LoadingPage = () => {
-    const router = useRouter();
-
-    const handleEnter = () => {
-        router.push("/home");
-    };
-
     return (
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
                     <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-                        <color attach="background" args={["#000000"]} />
+                        <color attach="background" args={["#fff"]} />
                         <ambientLight intensity={0.5} />
                         <spotLight
                             position={[10, 10, 10]}
@@ -79,14 +73,12 @@ const LoadingPage = () => {
                         <OrbitControls enableZoom={false} />
                     </Canvas>
                 </div>
-                <button
-                    className={styles.enterButton}
-                    onClick={handleEnter}
-                    aria-label="Enter site"
-                >
-                    ENTER
-                </button>
+                <div className={styles.titleText} aria-label="Enter site">
+                    STUDIO BLUMENSPIESS
+                </div>
+                <div className={styles.underText}>Under Construction ...</div>
             </div>
+            <LoadingFooter />
         </div>
     );
 };

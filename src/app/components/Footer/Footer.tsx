@@ -29,7 +29,7 @@ export const Footer = () => {
     };
 
     const instagramLink = "https://www.instagram.com/studio.blumenspiess/";
-    const mailLink = "mailto:helio.spiess@studio-blumenspiess.de";
+    const mailLink = "mailto:info@studio-blumenspiess.de";
 
     const renderActionButton = (
         cardType: CardType,

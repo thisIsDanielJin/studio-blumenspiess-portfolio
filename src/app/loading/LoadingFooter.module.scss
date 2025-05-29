@@ -1,0 +1,46 @@
+@use "@/styles/theme.scss" as theme;
+
+.footer {
+    width: 100%;
+    padding: 1rem 3rem;
+    height: var(--footer-height);
+    background-color: theme.color(white);
+    color: theme.color(black);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+
+    .container {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .leftContainer,
+    .rightContainer {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .link {
+        font-family: var(--font-geist-sans);
+        font-size: 1rem;
+        font-weight: 400;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 0.1rem solid theme.color(black);
+        border-radius: 2rem;
+        background-color: transparent;
+        color: theme.color(black);
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: theme.color(black);
+            color: theme.color(white);
+        }
+    }
+} 
