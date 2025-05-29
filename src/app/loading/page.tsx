@@ -108,7 +108,7 @@ const LoadingPage = () => {
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
-                    <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
+                    <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                         <color attach="background" args={["#fff"]} />
                         <ambientLight intensity={1.5} />
                         <directionalLight intensity={1.5} />
