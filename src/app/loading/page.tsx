@@ -2,10 +2,35 @@
 
 import { Suspense, useRef } from "react";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { OrbitControls, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import styles from "./Loading.module.scss";
 import { LoadingFooter } from "./LoadingFooter";
+
+/**
+ * LoadingMessage Component
+ * Displays a loading message while the 3D model is being loaded
+ * Uses Three.js Text component for proper rendering within Canvas
+ * @returns The rendered loading message component
+ */
+const LoadingMessage: React.FC = () => {
+    return (
+        <mesh>
+            <planeGeometry args={[2, 1]} />
+            <meshBasicMaterial color="#ffffff" transparent opacity={0} />
+            <Html
+                center
+                style={{
+                    color: "#000000",
+                    fontSize: "1.2rem",
+                    fontFamily: "var(--font-geist-sans)",
+                }}
+            >
+                Loading...
+            </Html>
+        </mesh>
+    );
+};
 
 /**
  * Helper function to get sRGBEncoding in a type-safe way
@@ -48,11 +73,12 @@ const Model: React.FC = () => {
             (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
                 color: 0xffffff,
                 metalness: 1,
-                roughness: 0.01,
-                clearcoat: 1,
-                clearcoatRoughness: 0.01,
-                reflectivity: 1,
+                roughness: 0.0,
+                clearcoat: 1.5,
+                clearcoatRoughness: 0.0,
+                reflectivity: 1.5,
                 envMap: texture,
+                ior: 2.5,
                 envMapIntensity: 1,
             });
         }
@@ -93,7 +119,7 @@ const LoadingPage = () => {
                             penumbra={1}
                             intensity={0.5}
                         />
-                        <Suspense fallback={null}>
+                        <Suspense fallback={<LoadingMessage />}>
                             <Model />
                         </Suspense>
                         <OrbitControls enableZoom={false} />
