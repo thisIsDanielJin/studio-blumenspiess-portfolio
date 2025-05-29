@@ -8,6 +8,11 @@ import styles from "./Loading.module.scss";
 import { LoadingFooter } from "./LoadingFooter";
 
 /**
+ * Helper to detect mobile devices
+ */
+const isMobile = typeof window !== 'undefined' && /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+/**
  * LoadingMessage Component
  * Displays a loading message while the 3D model is being loaded
  * Uses Three.js Text component for proper rendering within Canvas
@@ -104,7 +109,10 @@ const LoadingPage = () => {
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
-                    <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                    <Canvas
+                        camera={{ position: [0, 0, 5], fov: 45 }}
+                        dpr={isMobile ? 1 : [1, 2]}
+                    >
                         <color attach="background" args={["#fff"]} />
                         <ambientLight intensity={0.5} />
                         <spotLight
