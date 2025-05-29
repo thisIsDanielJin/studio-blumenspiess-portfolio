@@ -48,9 +48,9 @@ const Model: React.FC = () => {
             (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
                 color: 0xffffff,
                 metalness: 1,
-                roughness: 0.1,
+                roughness: 0.01,
                 clearcoat: 1,
-                clearcoatRoughness: 0.1,
+                clearcoatRoughness: 0.01,
                 reflectivity: 1,
                 envMap: texture,
                 envMapIntensity: 1,
@@ -78,7 +78,7 @@ const LoadingPage = () => {
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
-                    <Canvas camera={{ position: [0, 0, 4], fov: 45 }}>
+                    <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
                         <color attach="background" args={["#fff"]} />
                         <ambientLight intensity={0.5} />
                         <spotLight
