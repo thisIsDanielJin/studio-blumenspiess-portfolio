@@ -8,6 +8,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'PoWLimerick';
+    src: url('/fonts/PoWLimerickDemo-Flower.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 .loadingPage {
     width: 100vw;
     min-height: 100vh;
@@ -70,7 +78,7 @@
 }
 
 .titleText {
-    font-family: 'GlyphWorld', sans-serif;
+    font-family: 'PoWLimerick', sans-serif;
     font-size: 1.8rem;
     font-weight: normal;
     color: theme.color(black);
@@ -78,6 +86,7 @@
     letter-spacing: 0.1em;
     padding: 0 1rem;
     margin-top: 0.5rem;
+
 
     @media (min-width: 768px) {
         font-size: 2.5rem;
