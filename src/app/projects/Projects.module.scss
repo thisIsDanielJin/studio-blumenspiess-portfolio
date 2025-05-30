@@ -33,6 +33,7 @@
     cursor: pointer;
     color: theme.color(black);
     transition: color 0.2s ease;
+    font-family: 'GlyphWorld', sans-serif;
 
     &:hover {
         color: theme.color(gray);
