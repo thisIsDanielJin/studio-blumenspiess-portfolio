@@ -1,6 +1,7 @@
 "use client";
 
-import { Suspense, useRef } from "react";
+import Image from "next/image";
+import { Suspense, useRef, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -47,12 +48,25 @@ const getSRGBEncoding = (): number => {
 };
 
 /**
+ * Utility function to detect if the user is on a mobile device
+ * @returns boolean indicating if the device is mobile
+ */
+const isMobileDevice = (): boolean => {
+    if (typeof window === "undefined") return false;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+    );
+};
+
+/**
  * Model Component
  * Renders the 3D model using React Three Fiber with continuous rotation and chrome material
  * Uses a custom environment map for realistic chrome reflections
+ * Optimizes quality for mobile devices
  * @returns The rendered 3D model component
  */
 const Model: React.FC = () => {
+    const [isMobile, setIsMobile] = useState(false);
     const { scene } = useGLTF("/models/Chrome_Logo_Blas.gltf");
     const modelRef = useRef<THREE.Group>(null);
     const texture = useLoader(
@@ -61,36 +75,43 @@ const Model: React.FC = () => {
     );
     const { scene: threeScene } = useThree();
 
+    useEffect(() => {
+        setIsMobile(isMobileDevice());
+    }, []);
+
     // Set up the environment map
     texture.mapping = THREE.EquirectangularReflectionMapping;
     // @ts-expect-error: encoding is a number property, workaround for type issues
     texture.encoding = getSRGBEncoding() as unknown as number;
     threeScene.environment = texture;
 
-    // Apply chrome material to all meshes in the scene
+    // Apply chrome material to all meshes in the scene with mobile optimizations
     scene.traverse((child: THREE.Object3D) => {
         if ((child as THREE.Mesh).isMesh) {
             (child as THREE.Mesh).material = new THREE.MeshPhysicalMaterial({
                 color: 0xffffff,
-                metalness: 1,
-                roughness: 0.0,
-                clearcoat: 1.5,
-                clearcoatRoughness: 0.0,
-                reflectivity: 1.5,
+                metalness: isMobile ? 0.8 : 1,
+                roughness: isMobile ? 0.2 : 0.0,
+                clearcoat: isMobile ? 1.0 : 1.5,
+                clearcoatRoughness: isMobile ? 0.1 : 0.0,
+                reflectivity: isMobile ? 1.0 : 1.5,
                 envMap: texture,
-                envMapIntensity: 1.2,
+                envMapIntensity: isMobile ? 0.8 : 1.2,
             });
         }
     });
 
     useFrame((_state, delta) => {
         if (modelRef.current) {
-            // Rotate 30 degrees per second (0.5 radians per second)
-            modelRef.current.rotation.y += delta * 0.5;
+            // Slower rotation on mobile for better performance
+            const rotationSpeed = isMobile ? 0.3 : 0.5;
+            modelRef.current.rotation.y += delta * rotationSpeed;
         }
     });
 
-    return <primitive ref={modelRef} object={scene} scale={4.5} />;
+    return (
+        <primitive ref={modelRef} object={scene} scale={isMobile ? 3.5 : 4.5} />
+    );
 };
 
 /**
@@ -99,36 +120,65 @@ const Model: React.FC = () => {
  * @returns The rendered loading page component
  */
 const LoadingPage = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(isMobileDevice());
+    }, []);
+
     return (
         <div className={styles.loadingPage}>
             <div className={styles.content}>
                 <div className={styles.modelContainer}>
-                    <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                    <Canvas
+                        camera={{
+                            position: [0, 0, isMobile ? 6 : 5],
+                            fov: isMobile ? 35 : 45,
+                        }}
+                        dpr={isMobile ? [1, 1.5] : [1, 2]} // Limit pixel ratio on mobile
+                    >
                         <color attach="background" args={["#fff"]} />
-                        <ambientLight intensity={1.5} />
-                        <directionalLight intensity={1.5} />
-                        <spotLight
-                            position={[10, 10, 10]}
-                            angle={0.15}
-                            penumbra={1}
-                            intensity={2}
+                        <ambientLight intensity={isMobile ? 2 : 1.5} />
+                        <directionalLight intensity={isMobile ? 2 : 1.5} />
+                        {!isMobile && (
+                            <>
+                                <spotLight
+                                    position={[10, 10, 10]}
+                                    angle={0.15}
+                                    penumbra={1}
+                                    intensity={2}
+                                />
+                                <spotLight
+                                    position={[-10, -10, -10]}
+                                    angle={0.15}
+                                    penumbra={1}
+                                    intensity={2}
+                                />
+                            </>
+                        )}
+                        <pointLight
+                            position={[0, 0, 0]}
+                            intensity={isMobile ? 2 : 1.5}
                         />
-                        <spotLight
-                            position={[-10, -10, -10]}
-                            angle={0.15}
-                            penumbra={1}
-                            intensity={2}
-                        />
-                        <pointLight position={[0, 0, 0]} intensity={1.5} />
                         <Suspense fallback={<LoadingMessage />}>
                             <Model />
                         </Suspense>
-                        <OrbitControls enableZoom={false} />
+                        <OrbitControls
+                            enableZoom={false}
+                            enableDamping={!isMobile}
+                            dampingFactor={0.05}
+                        />
                     </Canvas>
                 </div>
-                <div className={styles.titleText} aria-label="Enter site">
-                    STUDIO BLUMENSPIESS
-                </div>
+                <Image
+                    src="/img/STUDIO_BLUMENSPIESS_Blas_Cropped.png"
+                    alt="Studio Blumenspieß Logo"
+                    width={1000}
+                    height={100}
+                    className={styles.logo}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 1000px"
+                />
                 <div className={styles.underText}>Under Construction ...</div>
             </div>
             <LoadingFooter />
