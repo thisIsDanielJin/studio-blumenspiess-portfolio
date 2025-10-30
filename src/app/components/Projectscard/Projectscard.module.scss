@@ -28,14 +28,33 @@
     aspect-ratio: 4/3;
 }
 
+.imageLayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+}
+
 .projectImage {
     object-fit: cover;
-    z-index: 1;
+}
+
+.cutoutLayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    cursor: pointer;
+    // Enable pointer events on the layer
+    pointer-events: auto;
 }
 
 .cutOverlay {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    z-index: 2;
+    // Disable pointer events on the image itself
     pointer-events: none;
 }
 
