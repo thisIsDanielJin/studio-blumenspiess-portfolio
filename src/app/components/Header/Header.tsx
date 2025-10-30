@@ -13,8 +13,13 @@ export const Header = () => {
     const isProjectsPath =
         pathname === "/projects" || pathname.startsWith("/projects/");
 
+    // Check if current path is a meta page
+    const isMetaPage = pathname.includes("_Meta");
+
     return (
-        <header className={styles.header}>
+        <header
+            className={`${styles.header} ${isMetaPage ? styles.inverted : ""}`}
+        >
             <nav className={styles.container}>
                 <Link
                     href="/home"
@@ -25,7 +30,7 @@ export const Header = () => {
 
                 <Link
                     href="/projects"
-                    className={`${styles.projectslink} ${isProjectsPath ? styles.activeLink : ""}`}
+                    className={`${styles.projectslink} ${isProjectsPath ? styles.activeLink : ""} ${isMetaPage ? styles.noHover : ""}`}
                     ref={containerRef}
                 >
                     <p className={styles.projectslinktext} ref={textRef}>

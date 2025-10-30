@@ -35,3 +35,18 @@
         }
     }
 }
+
+.inverted {
+    background-color: theme.color(black);
+    color: theme.color(white);
+
+    .link {
+        border-color: theme.color(white);
+        color: theme.color(white);
+        
+        &:hover {
+            background-color: theme.color(white);
+            color: theme.color(black);
+        }
+    }
+}

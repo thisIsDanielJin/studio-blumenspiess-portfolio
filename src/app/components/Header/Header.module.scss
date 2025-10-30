@@ -53,6 +53,43 @@
     color: theme.color(white);
 }
 
+.inverted {
+    background-color: theme.color(black);
+    color: theme.color(white);
+
+    .link {
+        border-color: theme.color(white);
+        color: theme.color(white);
+        
+        &:hover {
+            background-color: theme.color(white);
+            color: theme.color(black);
+        }
+    }
+
+    .noHover:hover {
+        background-color: transparent !important;
+        color: theme.color(white) !important;
+        cursor: default;
+    }
+
+    .activeLink {
+        background-color: theme.color(white);
+        color: theme.color(black);
+
+        &.noHover {
+            background-color: theme.color(white);
+            color: theme.color(black);
+            
+            &:hover {
+                background-color: theme.color(white) !important;
+                color: theme.color(black) !important;
+                cursor: default;
+            }
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         padding: 1rem;

@@ -45,13 +45,7 @@ export default function ProjectMeta() {
         <PageTemplate className={styles.projectMetaPage}>
             <div className={styles.container}>
                 <h1 className={styles.title}>{project.Name} - Meta</h1>
-                <div className={styles.content}>
-                    <p>Meta page for project: {project.Name}</p>
-                    {/* Add your meta content here */}
-                    <Link href={`/projects/${project.Name}`} className={styles.backLink}>
-                        Back to Project
-                    </Link>
-                </div>
+                <div className={styles.content}>Test</div>
             </div>
         </PageTemplate>
     );

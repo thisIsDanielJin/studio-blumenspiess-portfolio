@@ -5,6 +5,7 @@ import styles from "./Footer.module.scss";
 import { Textcard } from "../Textcard/Textcard";
 import { useState } from "react";
 import LanguageIcon from "@mui/icons-material/Language";
+import { usePathname } from "next/navigation";
 
 type CardContent = {
     box1: string;
@@ -15,7 +16,11 @@ type CardContent = {
 type CardType = keyof CardContent;
 
 export const Footer = () => {
+    const pathname = usePathname();
     const [activeCard, setActiveCard] = useState<CardType | null>(null);
+
+    // Check if current path is a meta page
+    const isMetaPage = pathname.includes("_Meta");
 
     const cardContents: CardContent = {
         box1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -57,7 +62,9 @@ export const Footer = () => {
     );
 
     return (
-        <footer className={styles.footer}>
+        <footer
+            className={`${styles.footer} ${isMetaPage ? styles.inverted : ""}`}
+        >
             <div className={styles.container}>
                 <nav className={styles.leftContainer}>
                     <Link href={instagramLink} className={styles.link}>
