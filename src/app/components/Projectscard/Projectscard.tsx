@@ -68,7 +68,7 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
         // If alpha is high (opaque black pixel), it's the cutout
         // If alpha is low (transparent), navigate to project
         if (alpha > 128) {
-            console.log(`Cutout of project ${project.Name} clicked`);
+            router.push(`/projects/${project.Name}_Meta`);
         } else {
             // Transparent area - navigate to project
             handleImageClick();
