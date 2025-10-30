@@ -24,6 +24,13 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className={styles.projectImage}
                     />
+                    <Image
+                        src="/img/Cut_Schwarz.svg"
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className={styles.cutOverlay}
+                    />
                 </div>
             </div>
         </Link>

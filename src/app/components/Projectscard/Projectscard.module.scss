@@ -30,6 +30,13 @@
 
 .projectImage {
     object-fit: cover;
+    z-index: 1;
+}
+
+.cutOverlay {
+    object-fit: cover;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .projectInfo {
