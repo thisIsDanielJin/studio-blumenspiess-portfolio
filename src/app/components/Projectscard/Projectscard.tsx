@@ -14,6 +14,8 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
     const cutoutLayerRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [imageData, setImageData] = useState<ImageData | null>(null);
+    const [isHoveringCutout, setIsHoveringCutout] = useState(false);
+    const [isHoveringImage, setIsHoveringImage] = useState(false);
 
     useEffect(() => {
         const img = new window.Image();
@@ -44,6 +46,29 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
         router.push(`/projects/${project.Name}`);
     };
 
+    const isClickOnCutout = (e: React.MouseEvent<HTMLDivElement>): boolean => {
+        if (!imageData || !cutoutLayerRef.current) {
+            return false;
+        }
+
+        const rect = cutoutLayerRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Convert coordinates to canvas coordinates
+        const scaleX = canvasRef.current!.width / rect.width;
+        const scaleY = canvasRef.current!.height / rect.height;
+        const canvasX = Math.floor(x * scaleX);
+        const canvasY = Math.floor(y * scaleY);
+
+        // Get pixel at position
+        const index = (canvasY * imageData.width + canvasX) * 4;
+        const alpha = imageData.data[index + 3];
+
+        // If alpha is high (opaque black pixel), it's the cutout
+        return alpha > 128;
+    };
+
     const handleCutoutLayerClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!imageData || !cutoutLayerRef.current) {
             // Fallback: navigate to project if canvas not loaded
@@ -51,28 +76,26 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
             return;
         }
 
-        const rect = cutoutLayerRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        // Convert click coordinates to canvas coordinates
-        const scaleX = canvasRef.current!.width / rect.width;
-        const scaleY = canvasRef.current!.height / rect.height;
-        const canvasX = Math.floor(x * scaleX);
-        const canvasY = Math.floor(y * scaleY);
-
-        // Get pixel at click position
-        const index = (canvasY * imageData.width + canvasX) * 4;
-        const alpha = imageData.data[index + 3];
-
-        // If alpha is high (opaque black pixel), it's the cutout
-        // If alpha is low (transparent), navigate to project
-        if (alpha > 128) {
-            router.push(`/projects/${project.Name}_Meta`);
+        if (isClickOnCutout(e)) {
+            const metaPath = `/projects/${project.Name}/meta`;
+            console.log("Navigating to meta page:", metaPath);
+            console.log("Project Name:", project.Name);
+            router.push(metaPath);
         } else {
             // Transparent area - navigate to project
             handleImageClick();
         }
+    };
+
+    const handleCutoutLayerHover = (e: React.MouseEvent<HTMLDivElement>) => {
+        const onCutout = isClickOnCutout(e);
+        setIsHoveringCutout(onCutout);
+        setIsHoveringImage(!onCutout);
+    };
+
+    const handleCutoutLayerLeave = () => {
+        setIsHoveringCutout(false);
+        setIsHoveringImage(false);
     };
 
     return (
@@ -82,7 +105,7 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
                 <div className={styles.imageContainer}>
                     {/* Bottom layer: clickable image */}
                     <div
-                        className={styles.imageLayer}
+                        className={`${styles.imageLayer} ${isHoveringImage ? styles.imageLayerGlow : ""}`}
                         onClick={handleImageClick}
                     >
                         <Image
@@ -98,8 +121,10 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ({ project }) => {
                     {/* Top layer: SVG cutout */}
                     <div
                         ref={cutoutLayerRef}
-                        className={styles.cutoutLayer}
+                        className={`${styles.cutoutLayer} ${isHoveringCutout ? styles.cutoutLayerGlow : ""}`}
                         onClick={handleCutoutLayerClick}
+                        onMouseMove={handleCutoutLayerHover}
+                        onMouseLeave={handleCutoutLayerLeave}
                     >
                         <img
                             src="/img/Cut_Schwarz.svg"

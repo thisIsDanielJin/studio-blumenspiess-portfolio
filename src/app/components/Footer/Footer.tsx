@@ -20,7 +20,7 @@ export const Footer = () => {
     const [activeCard, setActiveCard] = useState<CardType | null>(null);
 
     // Check if current path is a meta page
-    const isMetaPage = pathname.includes("_Meta");
+    const isMetaPage = pathname.includes("/meta");
 
     const cardContents: CardContent = {
         box1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

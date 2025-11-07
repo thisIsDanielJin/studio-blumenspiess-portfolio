@@ -14,7 +14,7 @@ export const Header = () => {
         pathname === "/projects" || pathname.startsWith("/projects/");
 
     // Check if current path is a meta page
-    const isMetaPage = pathname.includes("_Meta");
+    const isMetaPage = pathname.includes("/meta");
 
     return (
         <header

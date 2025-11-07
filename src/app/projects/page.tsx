@@ -24,26 +24,63 @@ const PROJECTS_PER_SLIDE = 6;
 // Wheel control function for horizontal scrolling
 const WheelControls = (slider: KeenSliderInstance) => {
     let touchTimeout: NodeJS.Timeout;
-    let wheelActive: boolean;
+    let wheelActive: boolean = false;
+    let accumulatedDelta: number = 0;
+    const DELTA_THRESHOLD = 50; // Threshold to trigger slide change
 
     function eventWheel(e: WheelEvent) {
-        e.preventDefault();
+        // Check if this is a trackpad gesture (smaller deltaY values, often has deltaX)
+        const isTrackpad = Math.abs(e.deltaY) < 50 || e.deltaX !== 0;
 
-        if (!wheelActive) {
-            wheelActive = true;
-        }
+        // For trackpad, use a more sophisticated approach
+        if (isTrackpad) {
+            // Only prevent default if we're using horizontal swipes
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                e.preventDefault();
 
-        // Use deltaY (vertical scroll) to move slides horizontally
-        if (e.deltaY > 0) {
-            slider.next();
+                // Accumulate horizontal delta
+                accumulatedDelta += e.deltaX;
+
+                if (!wheelActive) {
+                    wheelActive = true;
+                }
+
+                // Trigger slide change when accumulated delta exceeds threshold
+                if (Math.abs(accumulatedDelta) > DELTA_THRESHOLD) {
+                    if (accumulatedDelta > 0) {
+                        slider.next();
+                    } else {
+                        slider.prev();
+                    }
+                    accumulatedDelta = 0;
+                }
+
+                clearTimeout(touchTimeout);
+                touchTimeout = setTimeout(() => {
+                    wheelActive = false;
+                    accumulatedDelta = 0;
+                }, 100);
+            }
         } else {
-            slider.prev();
-        }
+            // Mouse wheel - use original behavior with vertical scrolling
+            e.preventDefault();
 
-        clearTimeout(touchTimeout);
-        touchTimeout = setTimeout(() => {
-            wheelActive = false;
-        }, 50);
+            if (!wheelActive) {
+                wheelActive = true;
+            }
+
+            // Use deltaY (vertical scroll) to move slides horizontally
+            if (e.deltaY > 0) {
+                slider.next();
+            } else {
+                slider.prev();
+            }
+
+            clearTimeout(touchTimeout);
+            touchTimeout = setTimeout(() => {
+                wheelActive = false;
+            }, 50);
+        }
     }
 
     slider.on("created", () => {
