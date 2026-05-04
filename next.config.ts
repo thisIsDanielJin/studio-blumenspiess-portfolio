@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
         includePaths: ["./src/styles"],
     },
     images: {
-        domains: ["picsum.photos"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "picsum.photos",
+            },
+        ],
     },
     async rewrites() {
         return [

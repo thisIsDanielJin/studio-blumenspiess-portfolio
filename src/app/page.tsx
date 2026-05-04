@@ -20,15 +20,6 @@ const LoadingMessage: React.FC = () => {
   );
 };
 
-const getSRGBEncoding = (): number => {
-  return (
-    (THREE as unknown as { sRGBEncoding?: number }).sRGBEncoding ??
-    (THREE as unknown as { ColorManagement?: { sRGBEncoding?: number } })
-      .ColorManagement?.sRGBEncoding ??
-    3001
-  );
-};
-
 const isMobileDevice = (): boolean => {
   if (typeof window === "undefined") return false;
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -51,8 +42,7 @@ const Model: React.FC = () => {
   }, []);
 
   texture.mapping = THREE.EquirectangularReflectionMapping;
-  // @ts-expect-error: encoding is a number property
-  texture.encoding = getSRGBEncoding() as unknown as number;
+  texture.colorSpace = THREE.SRGBColorSpace;
   threeScene.environment = texture;
 
   scene.traverse((child: THREE.Object3D) => {
