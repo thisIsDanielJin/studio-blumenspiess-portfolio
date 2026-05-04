@@ -1,0 +1,25 @@
+@use 'variables' as *;
+
+@mixin full-height {
+  height: calc(100vh - $header-height);
+}
+
+@mixin scroll-panel {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
+
+@mixin text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@mixin page-padding {
+  padding: $spacing-xl;
+}

@@ -1,0 +1,56 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  height: calc(100vh - $header-height);
+  margin-top: $header-height;
+}
+
+.left {
+  width: 50%;
+  @include scroll-panel;
+  @include page-padding;
+}
+
+.right {
+  width: 50%;
+  @include scroll-panel;
+  @include page-padding;
+}
+
+.heading {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-normal;
+  margin-bottom: $spacing-xl;
+  line-height: 1.1;
+}
+
+.cvList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.cvEntry {
+  font-size: $font-size-base;
+  line-height: 1.5;
+}
+
+.cvTitle {
+  font-weight: $font-weight-bold;
+}
+
+.contactBlock {
+  margin-bottom: $spacing-xl;
+  font-size: $font-size-base;
+  line-height: 1.8;
+}
+
+.label {
+  margin-bottom: $spacing-xs;
+}
+
+.link {
+  text-decoration: underline;
+}

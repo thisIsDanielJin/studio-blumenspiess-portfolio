@@ -1,54 +1,64 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./Header.module.scss";
 import { usePathname } from "next/navigation";
-import { useTextScale } from "@/app/hooks/useTextScale";
+import { useState } from "react";
+import { ProjectsMenu } from "./ProjectsMenu";
+import styles from "./Header.module.scss";
 
 export const Header = () => {
-    const pathname = usePathname();
-    const { containerRef, textRef } = useTextScale();
+  const pathname = usePathname();
+  const [projectsMenuOpen, setProjectsMenuOpen] = useState(false);
 
-    // Check if current path is projects or a sub-path of projects
-    const isProjectsPath =
-        pathname === "/projects" || pathname.startsWith("/projects/");
+  const isActive = (path: string) => {
+    if (path === "/studio-blumenspiess") return pathname === path;
+    if (path === "/about") return pathname.startsWith("/about");
+    if (path === "/relations") return pathname === "/relations";
+    return false;
+  };
 
-    // Check if current path is a meta page
-    const isMetaPage = pathname.includes("/meta");
+  const isProjectsActive = pathname.startsWith("/projects");
 
-    return (
-        <header
-            className={`${styles.header} ${isMetaPage ? styles.inverted : ""}`}
-        >
-            <nav className={styles.container}>
-                <Link
-                    href="/home"
-                    className={`${styles.link} ${pathname === "/home" ? styles.activeLink : ""}`}
-                >
-                    HOME
-                </Link>
+  return (
+    <>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
+          <Link
+            href="/studio-blumenspiess"
+            className={`${styles.navItem} ${isActive("/studio-blumenspiess") ? styles.active : ""}`}
+          >
+            STUDIO.BLUMENSPIESS
+          </Link>
 
-                <Link
-                    href="/projects"
-                    className={`${styles.projectslink} ${isProjectsPath ? styles.activeLink : ""} ${isMetaPage ? styles.noHover : ""}`}
-                    ref={containerRef}
-                >
-                    <p className={styles.projectslinktext} ref={textRef}>
-                        PROJEKTE
-                    </p>
-                </Link>
+          <Link
+            href="/about"
+            className={`${styles.navItem} ${isActive("/about") ? styles.active : ""}`}
+          >
+            ABOUT
+          </Link>
 
-                <Link
-                    href="/about"
-                    className={`${styles.link} ${pathname === "/about" ? styles.activeLink : ""}`}
-                >
-                    ABOUT
-                </Link>
+          <Link
+            href="/relations"
+            className={`${styles.navItem} ${isActive("/relations") ? styles.active : ""}`}
+          >
+            +++
+          </Link>
 
-                <Link href="/home" className={styles.link}>
-                    DE/EN
-                </Link>
-            </nav>
-        </header>
-    );
+          <button
+            className={`${styles.navItem} ${isProjectsActive ? styles.active : ""}`}
+            onClick={() => setProjectsMenuOpen(!projectsMenuOpen)}
+          >
+            PROJECTS
+          </button>
+        </nav>
+      </header>
+
+      {projectsMenuOpen && (
+        <ProjectsMenu
+          onClose={() => setProjectsMenuOpen(false)}
+          currentProjectId={pathname.startsWith("/projects/") ? pathname.split("/")[2] : undefined}
+        />
+      )}
+    </>
+  );
 };

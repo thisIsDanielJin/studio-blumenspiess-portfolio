@@ -1,0 +1,18 @@
+@use '../../../../styles/variables' as *;
+
+.textContent {
+  padding-right: $spacing-lg;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-normal;
+  margin-bottom: $spacing-md;
+  line-height: 1.1;
+}
+
+.body {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: 1.4;
+}

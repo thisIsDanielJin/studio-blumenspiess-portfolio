@@ -1,0 +1,8 @@
+@use '../../../styles/variables' as *;
+
+.highlight {
+  background-color: $color-highlight;
+  color: $color-foreground;
+  padding: 0 2px;
+  border-radius: 0;
+}

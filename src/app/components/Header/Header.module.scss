@@ -1,101 +1,35 @@
-@use "@/styles/theme.scss" as theme;
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .header {
-    width: 100%;
-    padding: 1rem 3rem;
-
-    height: var(--header-height);
-    background-color: theme.color(white);
-    color: theme.color(black);
-
-    .container {
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 4rem;
-    }
-
-    .link {
-        font-family: 'GlyphWorld', sans-serif;
-        font-size: 1rem;
-        font-weight: 400;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        border: 0.1rem solid theme.color(black);
-        border-radius: 2rem;
-        &:hover {
-            background-color: theme.color(black);
-            color: theme.color(white);
-        }
-    }
-
-    .projectslink {
-        @extend .link;
-        flex-grow: 2;
-        text-align: center;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .projectslinktext {
-        white-space: nowrap;
-        transform-origin: center;
-        display: inline-block;
-
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  background: $color-background;
+  z-index: $z-header;
+  display: flex;
+  align-items: center;
 }
 
-.activeLink {
-    background-color: theme.color(black);
-    color: theme.color(white);
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 $spacing-xl;
 }
 
-.inverted {
-    background-color: theme.color(black);
-    color: theme.color(white);
+.navItem {
+  @include text-uppercase;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-normal;
+  color: $color-foreground;
+  cursor: pointer;
+  transition: font-weight 0.1s;
 
-    .link {
-        border-color: theme.color(white);
-        color: theme.color(white);
-        
-        &:hover {
-            background-color: theme.color(white);
-            color: theme.color(black);
-        }
-    }
-
-    .noHover:hover {
-        background-color: transparent !important;
-        color: theme.color(white) !important;
-        cursor: default;
-    }
-
-    .activeLink {
-        background-color: theme.color(white);
-        color: theme.color(black);
-
-        &.noHover {
-            background-color: theme.color(white);
-            color: theme.color(black);
-            
-            &:hover {
-                background-color: theme.color(white) !important;
-                color: theme.color(black) !important;
-                cursor: default;
-            }
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .header {
-        padding: 1rem;
-
-        .nav {
-            gap: 1rem;
-        }
-    }
+  &.active {
+    font-weight: $font-weight-bold;
+  }
 }

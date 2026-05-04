@@ -5,10 +5,15 @@ const nextConfig: NextConfig = {
         includePaths: ["./src/styles"],
     },
     images: {
-        domains: [
-            "picsum.photos",
-            "studio-blumenspiess-cms-production.up.railway.app",
-        ],
+        domains: ["picsum.photos"],
+    },
+    async rewrites() {
+        return [
+            {
+                source: "/\\+\\+\\+",
+                destination: "/relations",
+            },
+        ];
     },
 };
 

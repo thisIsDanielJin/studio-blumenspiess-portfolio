@@ -1,0 +1,58 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.menu {
+  position: fixed;
+  top: $header-height;
+  right: $spacing-xl;
+  z-index: $z-menu;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $spacing-xs;
+}
+
+.item {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  color: $color-foreground;
+  cursor: pointer;
+  transition: font-weight 0.1s;
+
+  &:hover {
+    font-weight: $font-weight-bold;
+  }
+
+  &.active {
+    font-weight: $font-weight-bold;
+  }
+}
+
+.preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: $z-preview;
+  pointer-events: none;
+  animation: fadeIn 0.15s ease-out;
+
+  img {
+    display: block;
+    max-width: 400px;
+    max-height: 300px;
+    object-fit: cover;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

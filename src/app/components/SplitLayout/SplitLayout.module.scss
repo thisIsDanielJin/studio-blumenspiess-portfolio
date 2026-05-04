@@ -1,0 +1,20 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  height: calc(100vh - $header-height);
+  margin-top: $header-height;
+}
+
+.left {
+  width: $split-left;
+  @include scroll-panel;
+  @include page-padding;
+}
+
+.right {
+  width: $split-right;
+  @include scroll-panel;
+  position: relative;
+}

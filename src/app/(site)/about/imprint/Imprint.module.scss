@@ -1,0 +1,28 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  height: calc(100vh - $header-height);
+  margin-top: $header-height;
+}
+
+.content {
+  width: 50%;
+  @include scroll-panel;
+  @include page-padding;
+}
+
+.heading {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-normal;
+  margin-bottom: $spacing-lg;
+  line-height: 1.1;
+}
+
+.body {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: 1.4;
+}
