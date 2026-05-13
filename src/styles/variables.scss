@@ -1,31 +1,35 @@
+// --- Colors ---
 $color-background: #ffffff;
-$color-foreground: #000000;
+$color-foreground: #1a1a1a;
 $color-highlight: #ffff00;
 $color-overlay: rgba(0, 0, 0, 0.8);
 
-$font-family: Arial, Helvetica, sans-serif;
-$font-size-xs: 12px;
-$font-size-sm: 14px;
-$font-size-base: 18px;
-$font-size-lg: 24px;
-$font-size-xl: 40px;
-$font-size-2xl: 56px;
+// --- Typography (adjust scale here) ---
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-size-xs: 13px;
+$font-size-sm: 20px;
+$font-size-base: 22px;
+$font-size-lg: 28px;
+$font-size-xl: 44px;
+$font-size-2xl: 60px;
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 $font-weight-black: 900;
 
-$header-height: 48px;
+// --- Layout ---
+$header-height: 80px;
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
-$spacing-xl: 40px;
-$spacing-2xl: 64px;
+$spacing-xl: 48px;
+$spacing-2xl: 80px;
 
 $split-left: 33.33%;
 $split-right: 66.67%;
 
+// --- Z-index ---
 $z-header: 100;
 $z-menu: 90;
 $z-lightbox: 200;

@@ -37,8 +37,8 @@ export const ProjectsMenu = ({ onClose, currentProjectId }: ProjectsMenuProps) =
           <Image
             src={hoveredProject.previewImage}
             alt={hoveredProject.title}
-            width={400}
-            height={300}
+            width={800}
+            height={600}
             unoptimized
           />
         </div>

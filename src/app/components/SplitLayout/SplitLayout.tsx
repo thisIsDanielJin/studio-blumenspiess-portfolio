@@ -10,7 +10,7 @@ export const SplitLayout = ({ left, right }: SplitLayoutProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.left}>{left}</div>
-      <div className={styles.right}>{right}</div>
+      <div className={styles.right} data-scroll-panel>{right}</div>
     </div>
   );
 };
