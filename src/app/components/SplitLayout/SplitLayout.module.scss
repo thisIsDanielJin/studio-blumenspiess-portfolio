@@ -5,16 +5,37 @@
   display: flex;
   height: calc(100vh - $header-height);
   margin-top: $header-height;
+
+  @include mobile {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    margin-top: 0;
+    overflow-y: auto;
+  }
 }
 
 .left {
   width: $split-left;
   @include scroll-panel;
   @include page-padding;
+
+  @include mobile {
+    width: 100%;
+    padding: $spacing-xl $spacing-lg;
+    padding-top: $spacing-2xl;
+    overflow: visible;
+  }
 }
 
 .right {
   width: $split-right;
   @include scroll-panel;
   position: relative;
+
+  @include mobile {
+    width: 100%;
+    overflow: visible;
+    padding: 0 $spacing-lg $spacing-xl;
+  }
 }

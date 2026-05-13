@@ -6,12 +6,25 @@
   justify-content: flex-end;
   height: calc(100vh - $header-height);
   margin-top: $header-height;
+
+  @include mobile {
+    height: auto;
+    min-height: 100vh;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
 }
 
 .content {
   width: 50%;
   @include scroll-panel;
   @include page-padding;
+
+  @include mobile {
+    width: 100%;
+    overflow: visible;
+    padding: $spacing-xl $spacing-lg;
+  }
 }
 
 .heading {
@@ -19,10 +32,18 @@
   font-weight: $font-weight-normal;
   margin-bottom: $spacing-lg;
   line-height: 1.1;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
 }
 
 .body {
   font-size: $font-size-lg;
   font-weight: $font-weight-normal;
   line-height: 1.4;
+
+  @include mobile {
+    font-size: $font-size-base;
+  }
 }

@@ -7,13 +7,14 @@ import { ProjectImage } from "@/app/data/projects";
 import styles from "./ImageCanvas.module.scss";
 
 const REFERENCE_WIDTH = 1000;
+const MOBILE_BREAKPOINT = 768;
 
 interface ImageCanvasProps {
   images: ProjectImage[];
 }
 
 interface ImageState {
-  x: number; // stored in reference-width units (0-1000)
+  x: number;
   y: number;
   zIndex: number;
   isDragging: boolean;
@@ -21,7 +22,21 @@ interface ImageState {
   visibleDelay: number;
 }
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return isMobile;
+}
+
 export const ImageCanvas = ({ images }: ImageCanvasProps) => {
+  const isMobile = useIsMobile();
   const maxZRef = useRef(images.length + 1);
   const dragStartRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -41,6 +56,7 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    if (isMobile) return;
     const scrollParent = canvasRef.current?.closest("[data-scroll-panel]") as HTMLElement | null;
     if (!scrollParent) return;
 
@@ -54,9 +70,10 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
     resizeObserver.observe(scrollParent);
 
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     const scrollParent = canvasRef.current?.closest("[data-scroll-panel]") as HTMLElement | null;
 
     const observer = new IntersectionObserver(
@@ -89,7 +106,7 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
   const handleDragStart = useCallback((index: number, x: number, y: number) => {
     dragStartRef.current = { x, y };
@@ -124,6 +141,27 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
     setLightboxIndex(null);
   }, []);
 
+  // Mobile: simple vertical image stack
+  if (isMobile) {
+    return (
+      <div className={styles.mobileStack}>
+        {images.map((img, index) => (
+          <div key={index} className={styles.mobileImageWrapper}>
+            <Image
+              src={img.src}
+              alt=""
+              width={img.width}
+              height={img.height}
+              className={styles.mobileImage}
+              unoptimized
+            />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Desktop: draggable canvas
   const canvasHeight = Math.max(
     ...images.map((img) => img.y + img.height),
     800

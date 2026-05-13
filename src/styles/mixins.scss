@@ -23,3 +23,9 @@
 @mixin page-padding {
   padding: $spacing-2xl $spacing-xl;
 }
+
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}

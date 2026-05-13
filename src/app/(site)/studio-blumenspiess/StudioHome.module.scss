@@ -1,10 +1,16 @@
 @use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .textContent {
   padding-right: $spacing-xl;
   font-size: $font-size-lg;
   font-weight: $font-weight-normal;
   line-height: 1.5;
+
+  @include mobile {
+    padding-right: 0;
+    font-size: $font-size-base;
+  }
 }
 
 .title {
@@ -12,6 +18,10 @@
   font-weight: $font-weight-normal;
   line-height: 1.1;
   display: inline;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
 }
 
 .body {

@@ -5,18 +5,38 @@
   display: flex;
   height: calc(100vh - $header-height);
   margin-top: $header-height;
+
+  @include mobile {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    margin-top: 0;
+  }
 }
 
 .left {
   width: 50%;
   @include scroll-panel;
   @include page-padding;
+
+  @include mobile {
+    width: 100%;
+    overflow: visible;
+    padding: $spacing-xl $spacing-lg;
+  }
 }
 
 .right {
   width: 50%;
   @include scroll-panel;
   @include page-padding;
+
+  @include mobile {
+    width: 100%;
+    overflow: visible;
+    padding: $spacing-xl $spacing-lg;
+    padding-top: 0;
+  }
 }
 
 .heading {
@@ -24,6 +44,10 @@
   font-weight: $font-weight-normal;
   margin-bottom: $spacing-xl;
   line-height: 1.1;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
 }
 
 .cvList {
