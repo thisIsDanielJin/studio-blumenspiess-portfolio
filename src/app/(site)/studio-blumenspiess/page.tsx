@@ -30,8 +30,8 @@ export default function StudioHomePage() {
     <SplitLayout
       left={
         <div className={styles.textContent}>
-          <h1 className={styles.title}>studio.blumenspiess&#10033;</h1>
-          <p className={styles.body}>
+          <span className={styles.title}>studio.blumenspiess&#10033;</span>{" "}
+          <span className={styles.body}>
             Or repre nobis que volore as modi blandisque etus a archillor
             audisquam ipsum incte qui am dipsus conessim ipsam hariam fuga. Ro
             est, verspe poreritate mod essitatus esti am facesectem faccull
@@ -57,7 +57,7 @@ export default function StudioHomePage() {
             ent es volorporro volorest, omnis evelia volore vollit acerit essin
             enduciu mendaep tatioris num repe nihicia cus erio occuptati rem
             simaxim odigendae.
-          </p>
+          </span>
         </div>
       }
       right={<ImageCanvas images={homeImages} />}

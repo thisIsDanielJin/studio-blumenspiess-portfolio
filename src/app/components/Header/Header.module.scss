@@ -24,12 +24,12 @@
 .navItem {
   @include text-uppercase;
   font-size: $font-size-sm;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-normal;
   color: $color-foreground;
   cursor: pointer;
 
   &.active {
-    font-weight: $font-weight-black;
+    font-weight: $font-weight-bold;
   }
 
   &:nth-child(1) {

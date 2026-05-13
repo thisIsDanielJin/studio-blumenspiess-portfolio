@@ -21,10 +21,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     <SplitLayout
       left={
         <div className={styles.textContent}>
-          <h1 className={styles.title}>
+          <span className={styles.title}>
             {project.title} &#10033;
-          </h1>
-          <p className={styles.body}>
+          </span>{" "}
+          <span className={styles.body}>
             Or repre nobis que volore as modi blandisque etus a{" "}
             <Highlight>archillor</Highlight> audisquam ipsum incte qui am dipsus{" "}
             <Highlight>conessim ipsam hariam fuga.</Highlight> Ro est, verspe
@@ -48,7 +48,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             quibero cuptas post, te vent et doluptatem volo ist, imolum
             nustiur, utem exero exceaqui nonsequam, quo imende venis eat autem
             ent es volorporro volorest.
-          </p>
+          </span>
         </div>
       }
       right={<ImageCanvas images={project.images} />}
