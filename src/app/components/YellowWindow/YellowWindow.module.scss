@@ -15,6 +15,7 @@
 }
 
 .content {
+  position: relative;
   width: 100%;
   height: 100%;
   background: $color-highlight;
@@ -51,15 +52,15 @@
   box-sizing: border-box;
 }
 
-// Top-right corner gets a red/orange fill
-.handleTopRight {
+// Red close indicator — sits near top-right corner, offset inward from the actual handle
+.closeButton {
+  position: absolute;
+  top: -4px;
+  right: 10px;
   width: 8px;
   height: 8px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border: 1.5px solid #7EC8E3;
   background: #E85D4A;
   box-sizing: border-box;
+  z-index: 1;
 }

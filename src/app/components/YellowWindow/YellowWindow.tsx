@@ -64,7 +64,7 @@ export const YellowWindow = () => {
         className={styles.rndWrapper}
         resizeHandleComponent={{
           topLeft: <div className={styles.handle} />,
-          topRight: <div className={styles.handleTopRight} />,
+          topRight: <div className={styles.handle} />,
           bottomLeft: <div className={styles.handle} />,
           bottomRight: <div className={styles.handle} />,
           top: <div className={styles.handle} />,
@@ -74,6 +74,7 @@ export const YellowWindow = () => {
         }}
       >
         <div className={styles.content}>
+          <div className={styles.closeButton} />
           <div className={styles.clipContainer}>
             <div className={styles.innerCanvas} style={{ width: board.width, height: board.height }}>
               <Image
