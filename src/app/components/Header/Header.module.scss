@@ -111,16 +111,12 @@
 
 .mobileNavItem {
   @include text-uppercase;
-  font-size: $font-size-xl;
-  font-weight: $font-weight-bold;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-normal;
   color: $color-foreground;
   text-align: right;
   padding: $spacing-sm 0;
   text-decoration: none;
-
-  &First {
-    text-align: left;
-  }
 }
 
 .mobileProjectsList {
