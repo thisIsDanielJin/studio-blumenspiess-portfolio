@@ -52,8 +52,32 @@
   box-sizing: border-box;
 }
 
-// Red close indicator — sits near top-right corner, offset inward from the actual handle
-.closeButton {
+// Indicator boxes — blue (top-left), yellow (upper-right), red (near top-right corner)
+.indicatorBlue {
+  position: absolute;
+  top: -4px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #7EC8E3;
+  background: #7EC8E3;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.indicatorYellow {
+  position: absolute;
+  top: -4px;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #7EC8E3;
+  background: $color-highlight;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.indicatorRed {
   position: absolute;
   top: -4px;
   right: 10px;

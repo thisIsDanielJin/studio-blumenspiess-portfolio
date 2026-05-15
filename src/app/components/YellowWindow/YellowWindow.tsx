@@ -74,7 +74,9 @@ export const YellowWindow = () => {
         }}
       >
         <div className={styles.content}>
-          <div className={styles.closeButton} />
+          <div className={styles.indicatorBlue} />
+          <div className={styles.indicatorYellow} />
+          <div className={styles.indicatorRed} />
           <div className={styles.clipContainer}>
             <div className={styles.innerCanvas} style={{ width: board.width, height: board.height }}>
               <Image

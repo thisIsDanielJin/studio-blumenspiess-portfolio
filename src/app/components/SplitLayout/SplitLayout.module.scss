@@ -19,6 +19,7 @@
   width: $split-left;
   @include scroll-panel;
   @include page-padding;
+  padding-top: $spacing-lg;
 
   @include mobile {
     width: 100%;
