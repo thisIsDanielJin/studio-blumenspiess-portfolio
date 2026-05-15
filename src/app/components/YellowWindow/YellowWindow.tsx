@@ -52,6 +52,7 @@ export const YellowWindow = () => {
   return (
     <div className={styles.overlay}>
       <Rnd
+        dragHandleClassName={styles.content}
         default={{
           x: 420,
           y: 200,
@@ -61,7 +62,6 @@ export const YellowWindow = () => {
         minWidth={140}
         minHeight={100}
         className={styles.rndWrapper}
-        style={{ cursor: "grab" }}
         resizeHandleComponent={{
           topLeft: <div className={`${styles.handle} ${styles.handleCorner}`} />,
           topRight: <div className={`${styles.handle} ${styles.handleCorner}`} />,
