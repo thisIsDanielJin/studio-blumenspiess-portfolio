@@ -1,19 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { Rnd } from "react-rnd";
 import Image from "next/image";
+import { projects, homeBoard } from "@/app/data/projects";
 import styles from "./YellowWindow.module.scss";
 
 const MOBILE_BREAKPOINT = 768;
-
-interface YellowWindowProps {
-  boardSrc: string;
-  boardWidth: number;
-  boardHeight: number;
-  defaultPosition?: { x: number; y: number };
-  defaultSize?: { width: number; height: number };
-}
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
@@ -28,16 +22,23 @@ function useIsMobile() {
   return isMobile;
 }
 
-export const YellowWindow = ({
-  boardSrc,
-  boardWidth,
-  boardHeight,
-  defaultPosition = { x: 420, y: 200 },
-  defaultSize = { width: 320, height: 280 },
-}: YellowWindowProps) => {
+function useCurrentBoard() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/projects/")) {
+    const id = pathname.split("/")[2];
+    const project = projects.find((p) => p.id === id);
+    if (project?.board) return project.board;
+  }
+
+  return homeBoard;
+}
+
+export const YellowWindow = () => {
   const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
   const instanceRef = useRef(false);
+  const board = useCurrentBoard();
 
   useEffect(() => {
     if (instanceRef.current) return;
@@ -52,10 +53,10 @@ export const YellowWindow = ({
     <div className={styles.overlay}>
       <Rnd
         default={{
-          x: defaultPosition.x,
-          y: defaultPosition.y,
-          width: defaultSize.width,
-          height: defaultSize.height,
+          x: 420,
+          y: 200,
+          width: 320,
+          height: 280,
         }}
         minWidth={140}
         minHeight={100}
@@ -74,12 +75,12 @@ export const YellowWindow = ({
       >
         <div className={styles.content}>
           <div className={styles.clipContainer}>
-            <div className={styles.innerCanvas} style={{ width: boardWidth, height: boardHeight }}>
+            <div className={styles.innerCanvas} style={{ width: board.width, height: board.height }}>
               <Image
-                src={boardSrc}
+                src={board.src}
                 alt=""
-                width={boardWidth}
-                height={boardHeight}
+                width={board.width}
+                height={board.height}
                 unoptimized
                 draggable={false}
                 style={{ pointerEvents: "none", display: "block" }}

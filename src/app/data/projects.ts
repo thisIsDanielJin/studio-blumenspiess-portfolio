@@ -26,8 +26,8 @@ export interface Project {
 
 export const homeBoard: ProjectBoard = {
   src: "/boards/studio-blumenspiess.png",
-  width: 1200,
-  height: 900,
+  width: 800,
+  height: 600,
 };
 
 export const projects: Project[] = [
@@ -51,6 +51,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/500/560?random=1c", x: 520, y: 2720, width: 520, height: 520 },
     ],
     previewImage: "https://picsum.photos/400/300?random=1",
+    board: { src: "/boards/projekt-01.png", width: 800, height: 600 },
   },
   {
     id: "02",
@@ -66,6 +67,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/500/600?random=26", x: 500, y: 1120, width: 540, height: 560 },
     ],
     previewImage: "https://picsum.photos/400/300?random=2",
+    board: { src: "/boards/projekt-02.png", width: 800, height: 600 },
   },
   {
     id: "03",
@@ -86,6 +88,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/600/450?random=3b", x: 40, y: 2600, width: 560, height: 420 },
     ],
     previewImage: "https://picsum.photos/400/300?random=3",
+    board: { src: "/boards/projekt-03.png", width: 800, height: 600 },
   },
   {
     id: "04",
@@ -102,6 +105,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/580/400?random=47", x: 40, y: 1550, width: 540, height: 380 },
     ],
     previewImage: "https://picsum.photos/400/300?random=4",
+    board: { src: "/boards/projekt-04.png", width: 800, height: 600 },
   },
   {
     id: "05",
@@ -116,6 +120,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/600/430?random=55", x: 0, y: 1080, width: 560, height: 400 },
     ],
     previewImage: "https://picsum.photos/400/300?random=5",
+    board: { src: "/boards/projekt-05.png", width: 800, height: 600 },
   },
   {
     id: "06",
@@ -130,6 +135,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/620/400?random=65", x: 0, y: 1100, width: 580, height: 380 },
     ],
     previewImage: "https://picsum.photos/400/300?random=6",
+    board: { src: "/boards/projekt-06.png", width: 800, height: 600 },
   },
   {
     id: "07",
@@ -145,6 +151,7 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/540/500?random=76", x: 520, y: 1180, width: 520, height: 480 },
     ],
     previewImage: "https://picsum.photos/400/300?random=7",
+    board: { src: "/boards/projekt-07.png", width: 800, height: 600 },
   },
   {
     id: "08",
@@ -160,5 +167,6 @@ export const projects: Project[] = [
       { src: "https://picsum.photos/540/480?random=86", x: 520, y: 1180, width: 520, height: 460 },
     ],
     previewImage: "https://picsum.photos/400/300?random=8",
+    board: { src: "/boards/projekt-08.png", width: 800, height: 600 },
   },
 ];
