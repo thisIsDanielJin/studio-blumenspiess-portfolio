@@ -20,6 +20,7 @@
   background: $color-highlight;
   padding: 6px;
   box-sizing: border-box;
+  border: 1.5px solid #7EC8E3;
   cursor: grab;
 
   &:active {
@@ -37,23 +38,28 @@
   position: relative;
 }
 
-// Resize handles — small outlined squares that sit ON the edge/corner
+// Resize handles — same size, light blue border, white fill
 .handle {
+  width: 8px;
+  height: 8px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1.5px solid #444;
+  border: 1.5px solid #7EC8E3;
   background: white;
   box-sizing: border-box;
 }
 
-.handleCorner {
-  width: 9px;
-  height: 9px;
-}
-
-.handleEdge {
-  width: 7px;
-  height: 7px;
+// Top-right corner gets a red/orange fill
+.handleTopRight {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid #7EC8E3;
+  background: #E85D4A;
+  box-sizing: border-box;
 }

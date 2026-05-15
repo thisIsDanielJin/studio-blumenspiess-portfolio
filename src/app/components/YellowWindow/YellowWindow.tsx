@@ -63,14 +63,14 @@ export const YellowWindow = () => {
         minHeight={100}
         className={styles.rndWrapper}
         resizeHandleComponent={{
-          topLeft: <div className={`${styles.handle} ${styles.handleCorner}`} />,
-          topRight: <div className={`${styles.handle} ${styles.handleCorner}`} />,
-          bottomLeft: <div className={`${styles.handle} ${styles.handleCorner}`} />,
-          bottomRight: <div className={`${styles.handle} ${styles.handleCorner}`} />,
-          top: <div className={`${styles.handle} ${styles.handleEdge}`} />,
-          right: <div className={`${styles.handle} ${styles.handleEdge}`} />,
-          bottom: <div className={`${styles.handle} ${styles.handleEdge}`} />,
-          left: <div className={`${styles.handle} ${styles.handleEdge}`} />,
+          topLeft: <div className={styles.handle} />,
+          topRight: <div className={styles.handleTopRight} />,
+          bottomLeft: <div className={styles.handle} />,
+          bottomRight: <div className={styles.handle} />,
+          top: <div className={styles.handle} />,
+          right: <div className={styles.handle} />,
+          bottom: <div className={styles.handle} />,
+          left: <div className={styles.handle} />,
         }}
       >
         <div className={styles.content}>
