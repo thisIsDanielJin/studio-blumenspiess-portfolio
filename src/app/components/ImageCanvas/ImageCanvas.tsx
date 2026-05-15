@@ -8,6 +8,7 @@ import styles from "./ImageCanvas.module.scss";
 
 const REFERENCE_WIDTH = 1000;
 const MOBILE_BREAKPOINT = 768;
+const IMAGE_SCALE = 0.7;
 
 interface ImageCanvasProps {
   images: ProjectImage[];
@@ -115,19 +116,21 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
     );
   }, []);
 
-  const handleDragStop = useCallback((index: number, pixelX: number, y: number) => {
+  const handleDragStop = useCallback((index: number, pixelX: number, pixelY: number) => {
     const wasDragged =
       Math.abs(pixelX - dragStartRef.current.x) > 3 ||
-      Math.abs(y - dragStartRef.current.y) > 3;
+      Math.abs(pixelY - dragStartRef.current.y) > 3;
 
     const containerW = canvasRef.current?.closest("[data-scroll-panel]")?.clientWidth || REFERENCE_WIDTH;
+    const currentScale = (containerW / REFERENCE_WIDTH) * IMAGE_SCALE;
     const refX = (pixelX / containerW) * REFERENCE_WIDTH;
+    const refY = pixelY / currentScale;
 
     maxZRef.current += 1;
     setImageStates((prev) =>
       prev.map((state, i) =>
         i === index
-          ? { ...state, x: refX, y, zIndex: maxZRef.current, isDragging: false }
+          ? { ...state, x: refX, y: refY, zIndex: maxZRef.current, isDragging: false }
           : state
       )
     );
@@ -162,8 +165,9 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
   }
 
   // Desktop: draggable canvas
+  const scale = (containerWidth / REFERENCE_WIDTH) * IMAGE_SCALE;
   const canvasHeight = Math.max(
-    ...images.map((img) => img.y + img.height),
+    ...images.map((img) => img.y * scale + img.height * scale),
     800
   );
 
@@ -173,6 +177,9 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
         {images.map((img, index) => {
           const state = imageStates[index];
           const pixelX = (state.x / REFERENCE_WIDTH) * containerWidth;
+          const scaledW = img.width * scale;
+          const scaledH = img.height * scale;
+          const scaledY = state.y * scale;
 
           return (
             <div key={index}>
@@ -182,15 +189,15 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
                 style={{
                   position: "absolute",
                   left: (img.x / REFERENCE_WIDTH) * containerWidth,
-                  top: img.y,
-                  width: img.width,
-                  height: img.height,
+                  top: img.y * scale,
+                  width: scaledW,
+                  height: scaledH,
                   pointerEvents: "none",
                 }}
               />
               <Rnd
-                position={{ x: pixelX, y: state.y }}
-                size={{ width: img.width, height: img.height }}
+                position={{ x: pixelX, y: scaledY }}
+                size={{ width: scaledW, height: scaledH }}
                 enableResizing={false}
                 onDragStart={(_e, d) => {
                   handleDragStart(index, d.x, d.y);
@@ -217,8 +224,8 @@ export const ImageCanvas = ({ images }: ImageCanvasProps) => {
                   <Image
                     src={img.src}
                     alt=""
-                    width={img.width}
-                    height={img.height}
+                    width={Math.round(scaledW)}
+                    height={Math.round(scaledH)}
                     className={styles.image}
                     unoptimized
                     draggable={false}

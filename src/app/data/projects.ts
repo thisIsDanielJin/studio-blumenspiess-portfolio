@@ -8,6 +8,12 @@ export interface ProjectImage {
   zIndex?: number;
 }
 
+export interface ProjectBoard {
+  src: string;
+  width: number;
+  height: number;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -15,7 +21,14 @@ export interface Project {
   highlightRanges?: string[];
   images: ProjectImage[];
   previewImage: string;
+  board?: ProjectBoard;
 }
+
+export const homeBoard: ProjectBoard = {
+  src: "/boards/studio-blumenspiess.png",
+  width: 1200,
+  height: 900,
+};
 
 export const projects: Project[] = [
   {
